@@ -23,6 +23,9 @@ function init() {
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
   const cells = [] // put an empty array that our divs we create will be put in
+  // let livesLeft = 3
+  let score = 0
+  // let myInterval
 
   const kikiClass = 'kiki' // defining the class for our character
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
@@ -30,18 +33,22 @@ function init() {
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = 75
+  let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = 35
+  let planePositions = 0
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  // const scoreSpan = document.querySelector('currentSpan')  //
+  // const scoreSpan = document.querySelector('currentSpan') 
+  // const timeRemaining = document.querySelector('timerSpan)
+  // let timer = 0
   // let score = 0
 
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
-    for (let i = 0; i < cellCount; i++) { // using a for loop to run thru every cell
+    for (let i = 0; i < cellCount; i++) { // using a for loop to run through every cell
       const cell = document.createElement('div') // creates our new div
       cell.innerText = i // here we're saying we want the innerText of the div to be the index
       grid.appendChild(cell) // here we make the cell a child of the grid element we took from above ^
@@ -54,11 +61,10 @@ function init() {
     // console.log(theCells)
   }
 
-  // * ADDING KIKI TO GRID
 
-  // function handleClick(event) {
-  //   addKiki(position)
-  // }
+
+  
+  // * ADDING KIKI TO GRID
 
   function addKiki(position) { // takes the argument position so function is reusable
     // console.log('POSITION BEING PASSED IN --->', position)
@@ -79,14 +85,10 @@ function init() {
     cells[position].classList.add(planeClass)
   }
 
-  // * REMOVING EAGLES 
-  function removeEagle(position) {
-    cells[position].classList.remove(eagleClass)
-  }
 
   // * MOVING KIKI 
 
-  function handleKeyUp(event) {
+  function handleMoreKiki(event) {
     // console.log('key press')
     const key = event.keyCode // storing the event.keyCode in a variable to save us repeatedly typing it out!
     // console.log('POSITION BEFORE REDEFINING --->', kikiCurrentPosition)
@@ -110,11 +112,18 @@ function init() {
 
   }
 
+  //* WINNING POINTS
+  function winPoints(event) {
+    if (cells[11].classList.contains('kiki'))
+      score += 100
+    console.log('SCORE --->', score)
+}
+
 
 
   // * EVENT LISTENERS
 
-  document.addEventListener('keyup', handleKeyUp) // this listens to what keys are pressed (up down left right)
+  document.addEventListener('keyup', handleMoreKiki) // this listens to what keys are pressed (up down left right)
 
   // startButton.addEventListener('click', handleClick)
 
