@@ -32,12 +32,12 @@ function init() {
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
-  const eagleStartPosition = 75
-  let eaglePosition = 0
+  const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70]
+  // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
-  const planeStartPosition = 35
-  let planePositions = 0
+  const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  // let planePositions = 0
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
@@ -55,8 +55,24 @@ function init() {
       cells.push(cell) // this adds our newly create div to our empty arrays from earlier ^ []
     }
     addKiki(kikiStartPosition) // call function to add KIKI to start position
-    addEagle(eagleStartPosition) // call function to add KIKI to start position
-    addPlane(planeStartPosition) // call function to add KIKI to start position
+    addEagle(eagleStartPosition[0]) // call function to add  to EAGLE in start position
+    addEagle(eagleStartPosition[1]) 
+    addEagle(eagleStartPosition[2]) 
+    addEagle(eagleStartPosition[3]) 
+    addEagle(eagleStartPosition[4]) 
+    addEagle(eagleStartPosition[5]) 
+    addEagle(eagleStartPosition[6]) 
+    addPlane(planeStartPosition[0]) // call function to add PLANE to start position
+    addPlane(planeStartPosition[1]) 
+    addPlane(planeStartPosition[2]) 
+    addPlane(planeStartPosition[3]) 
+    addPlane(planeStartPosition[4]) 
+    addPlane(planeStartPosition[5]) 
+    addPlane(planeStartPosition[6]) 
+    addPlane(planeStartPosition[7]) 
+    addPlane(planeStartPosition[8]) 
+    addPlane(planeStartPosition[9]) 
+    addPlane(planeStartPosition[10]) 
     // const theCells = document.querySelectorAll('.cell')
     // console.log(theCells)
   }
