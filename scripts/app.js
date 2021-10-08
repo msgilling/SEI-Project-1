@@ -41,7 +41,7 @@ function init() {
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  const scoreSpan = document.querySelector('currentSpan') 
+  let scoreSpan = document.querySelector('currentSpan') 
   // const timeRemaining = document.querySelector('timerSpan)
   // let timer = 0
   // let score = 0
@@ -76,8 +76,6 @@ function init() {
     // const theCells = document.querySelectorAll('.cell')
     // console.log(theCells)
   }
-
-
 
   
   // * ADDING KIKI TO GRID
@@ -131,13 +129,13 @@ function init() {
   //* WINNING POINTS
   function winPoints(event) {
     if (cells[11].classList.contains('kiki')) {
-      score += 100
+      scoreSpan = score += 100
       console.log('SCORE --->', score)
     } else if (cells[15].classList.contains('kiki')){
-      score += 100
+      scoreSpan = score += 100
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki')) {
-      score += 100
+      scoreSpan = score += 100
       console.log('SCORE --->', score)
     } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
