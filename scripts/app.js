@@ -24,6 +24,7 @@ function init() {
   const cellCount = width * width // defining the number of cells in my grid
   const cells = [] // put an empty array that our divs we create will be put in
   let livesLeft = 3
+  const currentScore = document.querySelector('.currentScore')
   let score = 0
   // let myInterval
 
@@ -139,6 +140,8 @@ function init() {
       console.log('SCORE --->', score)
     } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
+    } else {
+      scoreSpan.innerText = currentScore
     }
   }
 
