@@ -130,15 +130,27 @@ function init() {
 
   //* WINNING POINTS
   function winPoints(event) {
-    if (cells[11, 15, 18].classList.contains('kiki')) {
+    if (cells[11].classList.contains('kiki')) {
+      score += 100
+      console.log('SCORE --->', score)
+    } else if (cells[15].classList.contains('kiki')){
+      score += 100
+      console.log('SCORE --->', score)
+    } else if (cells[18].classList.contains('kiki')) {
       score += 100
       console.log('SCORE --->', score)
     } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
-      livesLeft--
-    } else { 
-      // window.alert(score)
+      livesLeft-- 
     }
   }
+
+
+  // } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
+  //   livesLeft--
+  // } else { 
+  // window.alert(score)
+    
+  
 
 
 
