@@ -24,7 +24,6 @@ function init() {
   const cellCount = width * width // defining the number of cells in my grid
   const cells = [] // put an empty array that our divs we create will be put in
   let livesLeft = 3
-  const currentScore = document.querySelector('.currentScore')
   let score = 0
   // let myInterval
 
@@ -42,7 +41,8 @@ function init() {
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  let scoreSpan = document.querySelector('currentSpan') 
+  let currentScore = document.querySelector('.scoreSpan') 
+  console.log(currentScore)
   // const timeRemaining = document.querySelector('timerSpan)
   // let timer = 0
   // let score = 0
@@ -129,19 +129,20 @@ function init() {
 
   //* WINNING POINTS
   function winPoints(event) {
+    
     if (cells[11].classList.contains('kiki')) {
-      scoreSpan = score += 100
+      currentScore = score += 100
       console.log('SCORE --->', score)
     } else if (cells[15].classList.contains('kiki')){
-      scoreSpan = score += 100
+      currentScore = score += 100
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki')) {
-      scoreSpan = score += 100
+      currentScore = score += 100
       console.log('SCORE --->', score)
     } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
     } else {
-      scoreSpan.innerText = currentScore
+      currentScore.innerText = score
     }
   }
 
