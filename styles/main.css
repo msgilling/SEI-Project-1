@@ -11,10 +11,15 @@ body {
 }
 
 header {
+  height: 80vh;
+
+}
+
+aside {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   width: calc(33.33% - 10px);
   flex-direction: column;
   text-transform: lowercase;
