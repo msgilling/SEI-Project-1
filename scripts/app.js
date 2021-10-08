@@ -23,7 +23,7 @@ function init() {
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
   const cells = [] // put an empty array that our divs we create will be put in
-  // let livesLeft = 3
+  let livesLeft = 3
   let score = 0
   // let myInterval
 
@@ -41,7 +41,7 @@ function init() {
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  // const scoreSpan = document.querySelector('currentSpan') 
+  const scoreSpan = document.querySelector('currentSpan') 
   // const timeRemaining = document.querySelector('timerSpan)
   // let timer = 0
   // let score = 0
@@ -104,7 +104,7 @@ function init() {
 
   // * MOVING KIKI 
 
-  function handleMoreKiki(event) {
+  function handleMoveKiki(event) {
     // console.log('key press')
     const key = event.keyCode // storing the event.keyCode in a variable to save us repeatedly typing it out!
     // console.log('POSITION BEFORE REDEFINING --->', kikiCurrentPosition)
@@ -130,17 +130,22 @@ function init() {
 
   //* WINNING POINTS
   function winPoints(event) {
-    if (cells[11].classList.contains('kiki'))
+    if (cells[11, 15, 18].classList.contains('kiki')) {
       score += 100
-    console.log('SCORE --->', score)
-}
+      console.log('SCORE --->', score)
+    } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
+      livesLeft--
+    } else { 
+      // window.alert(score)
+    }
+  }
 
 
 
   // * EVENT LISTENERS
 
-  document.addEventListener('keyup', handleMoreKiki) // this listens to what keys are pressed (up down left right)
-
+  document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
+  document.addEventListener('keyup', winPoints)
   // startButton.addEventListener('click', handleClick)
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
