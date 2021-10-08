@@ -31,6 +31,10 @@ function init() {
 
   const startButton = document.querySelector('.start')
 
+  const scoreSpan = document.querySelector('currentSpan') 
+  console.log(scoreSpan)
+  let score = 0
+
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
     for (let i = 0; i < cellCount; i++) { // using a for loop to run thru every cell
