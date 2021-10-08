@@ -60,3 +60,14 @@ button {
   font-family: 'Abril Fatface', cursive;
   font-size: 18px;
 }
+
+.grid div.eagle { /* <<< THESE MOVE TO THE LEFT <<< */
+  background-image: url('../assets/eagle.png');
+  background-position: center;
+  background-size: contain;
+}
+.grid div.plane { /* >>> THESE MOVE TO THE RIGHT >>> */
+  background-image: url('../assets/plane.png');
+  background-position: center;
+  background-size: contain;
+}

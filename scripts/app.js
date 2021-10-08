@@ -29,6 +29,9 @@ function init() {
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
 
+  const eagleClass = 'eagle' // defining the class for eagle obstacle
+  const eagleStartPosition = 75 + 76 + 77
+
   const startButton = document.querySelector('.start') // making a button to click to start the game
 
   const scoreSpan = document.querySelector('currentSpan')  //
@@ -60,6 +63,16 @@ function init() {
   // * REMOVING KIKI
   function removeKiki(position) {
     cells[position].classList.remove(kikiClass)
+  }
+
+  // * ADDING EAGLES TO GRID
+  function addEagle(position) {
+    cells[position].classList.add(eagleClass)
+  }
+
+  // * REMOVING EAGLES 
+  function removeEagle(position) {
+    cells[position].classList.remove(eagleClass)
   }
 
   // * MOVING KIKI 
@@ -97,6 +110,7 @@ function init() {
   startButton.addEventListener('click', handleClick)
 
   createGrid(kikiStartPosition)
+  createGrid(eagleStartPosition)
   // console.log('CELLS', cells)
 }
 
