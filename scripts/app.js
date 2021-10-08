@@ -29,10 +29,9 @@ function init() {
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
 
-  const startButton = document.querySelector('.start')
+  const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  const scoreSpan = document.querySelector('currentSpan') 
-  console.log(scoreSpan)
+  const scoreSpan = document.querySelector('currentSpan')  //
   let score = 0
 
   // * MAKING THE GRID
