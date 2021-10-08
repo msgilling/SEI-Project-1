@@ -45,6 +45,8 @@ aside {
   font-family: 'Abril Fatface', cursive;
   color: white;
   letter-spacing: 3px;
+  /* border: 2px solid white; */
+  
 }
 
 .grid {
