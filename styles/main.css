@@ -6,6 +6,7 @@ body {
   height: 80vh;
   margin: 0;
   display: flex;
+  /* background-image: linear-gradient( rgba(254,219,255,1), rgba(34,149,195,1),rgba(254,219,255,1)) */
   
 }
 
@@ -55,19 +56,26 @@ header {
 }
 
 button {
-  padding: 10px 40px 10px 40px;
+  padding: 7px 40px 7px 40px;
+  letter-spacing: 5px;
   text-transform: lowercase;
+  color: white;
   font-family: 'Abril Fatface', cursive;
-  font-size: 18px;
+  font-size: 20px;
+  border: none;
+  background-color: rgb(70, 113, 255);
+  border-radius: 5px;
 }
 
 .grid div.eagle { /* <<< THESE MOVE TO THE LEFT <<< */
   background-image: url('../assets/eagle.png');
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .grid div.plane { /* >>> THESE MOVE TO THE RIGHT >>> */
   background-image: url('../assets/plane.png');
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
 }

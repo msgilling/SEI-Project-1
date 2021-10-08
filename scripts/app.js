@@ -19,7 +19,6 @@ console.log('js running')
 function init() {
 
   // * VARIABLES
-
   const grid = document.querySelector('.grid') // get the grid element
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
@@ -30,12 +29,15 @@ function init() {
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
-  const eagleStartPosition = 75 + 76 + 77
+  const eagleStartPosition = 75
 
-  const startButton = document.querySelector('.start') // making a button to click to start the game
+  const planeClass = 'plane' // defining the class for plane obstacle
+  const planeStartPosition = 35
 
-  const scoreSpan = document.querySelector('currentSpan')  //
-  let score = 0
+  // const startButton = document.querySelector('.start') // making a button to click to start the game
+
+  // const scoreSpan = document.querySelector('currentSpan')  //
+  // let score = 0
 
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
@@ -46,15 +48,18 @@ function init() {
       cells.push(cell) // this adds our newly create div to our empty arrays from earlier ^ []
     }
     addKiki(kikiStartPosition) // call function to add KIKI to start position
+    addEagle(eagleStartPosition) // call function to add KIKI to start position
+    addPlane(planeStartPosition) // call function to add KIKI to start position
     // const theCells = document.querySelectorAll('.cell')
     // console.log(theCells)
   }
 
   // * ADDING KIKI TO GRID
 
-  function handleClick(event) {
-    addKiki(position)
-  }
+  // function handleClick(event) {
+  //   addKiki(position)
+  // }
+
   function addKiki(position) { // takes the argument position so function is reusable
     // console.log('POSITION BEING PASSED IN --->', position)
     // console.log('CELL WE PICKING USING THE POSITION INDEX THATS PASSED IN --->', cells[position])
@@ -68,6 +73,10 @@ function init() {
   // * ADDING EAGLES TO GRID
   function addEagle(position) {
     cells[position].classList.add(eagleClass)
+  }
+  // * ADDING PLANES TO GRID
+  function addPlane(position) {
+    cells[position].classList.add(planeClass)
   }
 
   // * REMOVING EAGLES 
@@ -105,12 +114,12 @@ function init() {
 
   // * EVENT LISTENERS
 
-  document.addEventListener('keyup', handleKeyUp)
+  document.addEventListener('keyup', handleKeyUp) // this listens to what keys are pressed (up down left right)
 
-  startButton.addEventListener('click', handleClick)
+  // startButton.addEventListener('click', handleClick)
 
-  createGrid(kikiStartPosition)
-  createGrid(eagleStartPosition)
+  createGrid(kikiStartPosition) // this pass function the starting position of Kiki
+  
   // console.log('CELLS', cells)
 }
 
