@@ -41,14 +41,15 @@ function init() {
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  let currentScore = document.querySelector('.scoreSpan') 
+  let currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
   // const timeRemaining = document.querySelector('timerSpan)
   // let timer = 0
-  // let score = 0
+  // let counter = 0
 
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
+    
     for (let i = 0; i < cellCount; i++) { // using a for loop to run through every cell
       const cell = document.createElement('div') // creates our new div
       cell.innerText = i // here we're saying we want the innerText of the div to be the index
@@ -129,20 +130,24 @@ function init() {
 
   //* WINNING POINTS
   function winPoints(event) {
-    
+    // const playerScore = score + event.target.innerText // get element
+    // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
-      currentScore = score += 100
+      currentScore.innerText = score += 100
+      // currentScore.innerText = score
       console.log('SCORE --->', score)
     } else if (cells[15].classList.contains('kiki')){
-      currentScore = score += 100
+      currentScore.innerText = score += 100
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki')) {
-      currentScore = score += 100
+      currentScore.innerText = score += 100
       console.log('SCORE --->', score)
     } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
+      console.log('LIVES LEFT', livesLeft)
     } else {
-      currentScore.innerText = score
+      // currentScore.innerText = playerScore
+      
     }
   }
 
