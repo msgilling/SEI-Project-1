@@ -141,21 +141,34 @@ function init() {
       console.log('SCORE --->', score)
       cells[11].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
-      alert('100 POINTS!', score)
+      // alert('100 POINTS!', score) // use another alert system??
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
       cells[15].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
-      window.alert('100 POINTS!', score)
+      // window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki')) {
       currentScore.innerText = score += 100
       cells[18].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
-      window.alert('100 POINTS!', score)
+      // window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
-    } else {
-      console.log('SCORE', score)
+    } else if (score === 300) {
+      // alert('ALL DELIVERED!', score)
+      cells[11].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      // console.log('SCORE', score)
+    } else if (score === 300) {
+      // alert('ALL DELIVERED!', score)
+      cells[15].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      // console.log('SCORE', score)
+    } else if (score === 300) {
+      // alert('ALL DELIVERED!', score)
+      cells[18].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      // console.log('SCORE', score)
     }
       
   } 
@@ -167,7 +180,7 @@ function init() {
     if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
       console.log('LIVES LEFT', livesLeft)
-    } else if (eagleCurrentPosition.classList.contains('kiki') && livesLeft > 0) {
+    } else if (eagleClass.classList.contains('kiki') && livesLeft > 0) {
       livesLeft--
       console.log('LIVES LEFT', livesLeft)
     }
