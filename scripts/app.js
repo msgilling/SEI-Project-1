@@ -33,12 +33,13 @@ function init() {
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70]
-  const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70]
+  const eagleCurrentPosition = document.querySelectorAll('.eagle')
+  // const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70]
   // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
-  // const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  // const planeCurrentPosition = document.querySelectorAll('.plane')
   // let planePositions = 0
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
@@ -132,7 +133,7 @@ function init() {
 
   }
 
-  //* WINNING POINTS
+  //* WINNING POINTS 
   function winPoints(event) {
     // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
@@ -154,17 +155,17 @@ function init() {
       cells[95].classList.add(kikiClass)
       // window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
-    } else if (score === 300) {
+    } else if (currentScore === 300) {
       // alert('ALL DELIVERED!', score)
       cells[11].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
       // console.log('SCORE', score)
-    } else if (score === 300) {
+    } else if (currentScore === 300) {
       // alert('ALL DELIVERED!', score)
       cells[15].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
       // console.log('SCORE', score)
-    } else if (score === 300) {
+    } else if (currentScore === 300) {
       // alert('ALL DELIVERED!', score)
       cells[18].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
@@ -177,14 +178,26 @@ function init() {
   
   //* LOSING LIVES
   function LoseLives(event) {
-    if (cells[75].classList.contains('kiki') && livesLeft > 0) {
-      livesLeft-- 
-      console.log('LIVES LEFT', livesLeft)
-    } else if (eagleClass.classList.contains('kiki') && livesLeft > 0) {
+    if (document.getElementsByClassName('eagle').forEach('kiki') && livesLeft > 0) {
       livesLeft--
-      console.log('LIVES LEFT', livesLeft)
     }
   }
+
+  // if (cells('eagle').classList.contains('kiki') && livesLeft > 0) {
+  //   livesLeft-- 
+  //   console.log('LIVES LEFT', livesLeft)
+
+  // } else if (cells[76].classList.contains('kiki') && livesLeft > 0) {
+  //   livesLeft-- 
+  //   console.log('LIVES LEFT', livesLeft)
+
+
+  // } else {
+  //   console.log('something')
+    
+
+  
+  
 
 
   // } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {

@@ -61,7 +61,7 @@ aside {
   background-image: url('../assets/2151256.png');
   background-position: center;
   background-size: cover;
-
+  
 }
 
 .grid-wrapper {
@@ -73,10 +73,11 @@ aside {
 }
 
 .grid div {
-  border: 1px solid lightgrey; /* temp color */
+  /* border: 1px solid lightgrey; temp color */
   flex-grow: 1;
   height: 10%;
   width: 10%;
+  /* font-size: 0px; */
 }
 
 .grid div.kiki {
