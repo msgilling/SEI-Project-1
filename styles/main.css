@@ -108,3 +108,36 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+div.lives {
+  display: flex;
+  justify-content: space-between;
+}
+div #one.heart {
+  background-image: url('../assets/breadpixel.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  
+}
+div #two.heart {
+  background-image: url('../assets/breadpixel.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+div #three.heart {
+  background-image: url('../assets/breadpixel.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}

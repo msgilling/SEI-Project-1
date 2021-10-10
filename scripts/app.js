@@ -33,16 +33,20 @@ function init() {
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70]
+  const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70]
   // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  // const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
   // let planePositions = 0
 
   // const startButton = document.querySelector('.start') // making a button to click to start the game
 
-  let currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
+  const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
+  const currentHearts = document.querySelector('.lives')
+  console.log(currentHearts)
   // const timeRemaining = document.querySelector('timerSpan)
   // let timer = 0
   // let counter = 0
@@ -130,24 +134,42 @@ function init() {
 
   //* WINNING POINTS
   function winPoints(event) {
-    // const playerScore = score + event.target.innerText // get element
     // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
       currentScore.innerText = score += 100
       // currentScore.innerText = score
       console.log('SCORE --->', score)
+      cells[11].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      alert('100 POINTS!', score)
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
+      cells[15].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki')) {
       currentScore.innerText = score += 100
+      cells[18].classList.remove(kikiClass)
+      cells[95].classList.add(kikiClass)
+      window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
-    } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
+    } else {
+      console.log('SCORE', score)
+    }
+      
+  } 
+
+  
+  
+  //* LOSING LIVES
+  function LoseLives(event) {
+    if (cells[75].classList.contains('kiki') && livesLeft > 0) {
       livesLeft-- 
       console.log('LIVES LEFT', livesLeft)
-    } else {
-      // currentScore.innerText = playerScore
-      
+    } else if (eagleCurrentPosition.classList.contains('kiki') && livesLeft > 0) {
+      livesLeft--
+      console.log('LIVES LEFT', livesLeft)
     }
   }
 
@@ -165,6 +187,7 @@ function init() {
 
   document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
   document.addEventListener('keyup', winPoints)
+  document.addEventListener('keyup', LoseLives)
   // startButton.addEventListener('click', handleClick)
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
