@@ -203,6 +203,7 @@ function init() {
     
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
+      document.getElementById('one').src = './assets/brokenbread (1).png'
       // event.target.src = './assets/brokenbread (1).png'
       // console.log('breadHeart', breadHeart)
       // console.log('event.target.src', event.target.src)
