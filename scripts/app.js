@@ -18,7 +18,7 @@ console.log('js running')
 
 function init() {
 
-  // * VARIABLES
+  // * VARIABLES & ELEMENTS
   const grid = document.querySelector('.grid') // get the grid element
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
@@ -26,6 +26,7 @@ function init() {
   let livesLeft = 3
   let score = 0
   const breadHeart = document.querySelectorAll('.hearts')
+  console.log('breadheart', breadHeart)
   // let myInterval 
 
   const audio = document.querySelector('audio')
@@ -39,9 +40,9 @@ function init() {
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
-  const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70]
+  const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70, 71]
   const eagleCurrentPosition = document.querySelectorAll('.eagle')
-  // const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70]
+  // const eagleCurrentPosition = 0
   // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
@@ -50,14 +51,22 @@ function init() {
   // let planePositions = 0
 
   const startButton = document.querySelector('.start') // making a button to click to start the game
+  // const resetButton = document.querySelector('reset') // making a button to reset the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
   const currentHearts = document.querySelector('.lives')
   console.log(currentHearts)
-  // const timeRemaining = document.querySelector('timerSpan)
+  // const timeRemaining = document.querySelector('.timerSpan)
   // let timer = 0
   // let counter = 0
+
+  const winGame = document.createElement('div') // defining a winGame function
+  console.log('wingame', winGame)
+  winGame.innerText = 'CONGRATS! YOU HELPED KIKI DELIVER ALL THE BREAD! PLAY AGAIN?' // what I wnt to somehow pop up
+  const loseGame = document.createElement('div') // defining a loseGame function
+  console.log('loseGame', loseGame)
+  loseGame.innerText = 'OH NO! KIKI COULD NOT MAKE ALL HER DELIVERIES. TRY AGAIN?' // text I want to pop up
 
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
@@ -152,22 +161,27 @@ function init() {
       currentScore.innerText = score += 100
       // currentScore.innerText = score
       console.log('SCORE --->', score)
-      cells[11].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
+      removeKiki(kikiCurrentPosition)
+      addKiki(kikiStartPosition)
+      
       // alert('100 POINTS!', score) // use another alert system??
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
-      cells[15].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
+      removeKiki(kikiCurrentPosition)
+      addKiki(kikiStartPosition)
+      // cells[95].classList.add(kikiClass)
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki') && score !== 300) {
       currentScore.innerText = score += 100
-      cells[18].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
+      removeKiki(kikiCurrentPosition)
+      addKiki(kikiStartPosition)
+      // cells[95].classList.add(kikiClass)
       console.log('SCORE --->', score)
     } else if (currentScore === 300) {
       // alert('ALL DELIVERED!', score)
-      cells[11, 15, 18].classList.remove(kikiClass) // need to add endGame function
+      cells[11, 15, 18].classList.remove(kikiClass)
+      // alert.winGame() // need to add endGame function
+      // console.log('winGame', winGame)
       
       // console.log('SCORE', score)
       // } else if (currentScore === 300) {
@@ -191,7 +205,9 @@ function init() {
     
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
-      console.log('event.target.src', event.target.src)
+      // event.target.src = './assets/brokenbread (1).png'
+      // console.log('breadHeart', breadHeart)
+      // console.log('event.target.src', event.target.src)
       console.log('lives left', livesLeft)
       // event.target.classList.add('broke-heart')
       // console.log('livesLeft', livesLeft)
@@ -211,11 +227,42 @@ function init() {
   function handleClick(event) {
 
     setInterval(() => {
-      eagleCurrentPosition--
-      planeCurrentPosition++
+      eagleCurrentPosition++
     
     }, 1000)
   }
+
+  //* TIMER
+  const timeRemaining = document.querySelector('.timerSpan')
+  let timerId = null
+  const currentTime = 20
+
+
+  function startTimer() {
+    if (timerId) { 
+      console.log('the timer was alreading running')
+      clearInterval(timerId) 
+      timerId = null 
+    } else {
+      console.log('the timer wasnt running, so a new one has been started')
+      timerId = setInterval(() => { // set the timer to run every 1 second
+        currentTime-- // reduce time remaining by one
+        timeRemaining.innerHTML = currentTime // set the time remaining on the screen
+        if (timeRemaining === 0) { // if time is up
+          clearInterval(timerId) // clear the current timer
+        }
+      }, 1000)
+    }
+  }
+
+  // * RESETTING GAME
+  // function handleResetTimer() {
+  //   clearInterval(timerId) // clear the timer
+  //   timerBody.classList.remove('ringing') // remove the class thats making it animate
+  //   timerId = null // set the timer back to null, ready for a new id
+  //   timeRemaining = 10 // set the time remaining back to 10 ready to start again
+  //   timerScreen.innerHTML = timeRemaining // set the time on the screen back to the starting number
+  // }
 
   // * EVENT LISTENERS
 
@@ -223,10 +270,16 @@ function init() {
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
   startButton.addEventListener('click', handleClick)
+  startButton.addEventListener('click', startTimer)
+
+
+  // breadHeart.forEach(button => {
+  //   button.addEventListener('keyUp', checkCollision)
+  // })
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
 
-  playAudio.addEventListener('click', handlePlayAudio)
+  playAudio.addEventListener('click', handlePlayAudio) // click to play music
   
   // console.log('CELLS', cells)
 }
