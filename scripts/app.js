@@ -154,7 +154,7 @@ function init() {
 
   }
 
-  //* WINNING POINTS 
+  // * WINNING POINTS 
   function winPoints(event) {
     // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
@@ -164,7 +164,6 @@ function init() {
       removeKiki(kikiCurrentPosition)
       addKiki(kikiStartPosition)
       
-      // alert('100 POINTS!', score) // use another alert system??
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
       removeKiki(kikiCurrentPosition)
@@ -178,9 +177,8 @@ function init() {
       // cells[95].classList.add(kikiClass)
       console.log('SCORE --->', score)
     } else if (currentScore === 300) {
-      // alert('ALL DELIVERED!', score)
       cells[11, 15, 18].classList.remove(kikiClass)
-      // alert.winGame() // need to add endGame function
+      
       // console.log('winGame', winGame)
       
       // console.log('SCORE', score)
@@ -235,7 +233,7 @@ function init() {
   //* TIMER
   const timeRemaining = document.querySelector('.timerSpan')
   let timerId = null
-  const currentTime = 20
+  let gameTime = 20
 
 
   function startTimer() {
@@ -246,22 +244,18 @@ function init() {
     } else {
       console.log('the timer wasnt running, so a new one has been started')
       timerId = setInterval(() => { // set the timer to run every 1 second
-        currentTime-- // reduce time remaining by one
-        timeRemaining.innerHTML = currentTime // set the time remaining on the screen
-        if (timeRemaining === 0) { // if time is up
+        gameTime-- // reduce time remaining by one
+        timeRemaining.innerHTML = gameTime // set the time remaining on the screen
+        if (gameTime === 0) { // if time is up
           clearInterval(timerId) // clear the current timer
         }
       }, 1000)
     }
   }
 
-  // * RESETTING GAME
-  // function handleResetTimer() {
-  //   clearInterval(timerId) // clear the timer
-  //   timerBody.classList.remove('ringing') // remove the class thats making it animate
-  //   timerId = null // set the timer back to null, ready for a new id
-  //   timeRemaining = 10 // set the time remaining back to 10 ready to start again
-  //   timerScreen.innerHTML = timeRemaining // set the time on the screen back to the starting number
+  // * RESTARTING GAME
+  // function restartGame() {
+  // 
   // }
 
   // * EVENT LISTENERS
