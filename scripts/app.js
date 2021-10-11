@@ -25,7 +25,14 @@ function init() {
   const cells = [] // put an empty array that our divs we create will be put in
   let livesLeft = 3
   let score = 0
-  // let myInterval
+  const breadHeart = document.querySelectorAll('.hearts')
+  // let myInterval 
+
+  const audio = document.querySelector('audio')
+  const playAudio = document.querySelector('.play')
+  console.log(audio)
+
+  
 
   const kikiClass = 'kiki' // defining the class for our character
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
@@ -39,10 +46,10 @@ function init() {
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
-  // const planeCurrentPosition = document.querySelectorAll('.plane')
+  const planeCurrentPosition = document.querySelectorAll('.plane')
   // let planePositions = 0
 
-  // const startButton = document.querySelector('.start') // making a button to click to start the game
+  const startButton = document.querySelector('.start') // making a button to click to start the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
@@ -84,6 +91,11 @@ function init() {
     // console.log(theCells)
   }
 
+  // * PLAY MUSIC?
+
+  function handlePlayAudio() {
+    audio.src = 'https://youtu.be/5vzw3LrnSro'
+  }
   
   // * ADDING KIKI TO GRID
 
@@ -147,28 +159,26 @@ function init() {
       currentScore.innerText = score += 100
       cells[15].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
-      // window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
-    } else if (cells[18].classList.contains('kiki')) {
+    } else if (cells[18].classList.contains('kiki') && score !== 300) {
       currentScore.innerText = score += 100
       cells[18].classList.remove(kikiClass)
       cells[95].classList.add(kikiClass)
-      // window.alert('100 POINTS!', score)
       console.log('SCORE --->', score)
     } else if (currentScore === 300) {
       // alert('ALL DELIVERED!', score)
-      cells[11].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
+      cells[11, 15, 18].classList.remove(kikiClass) // need to add endGame function
+      
       // console.log('SCORE', score)
-    } else if (currentScore === 300) {
-      // alert('ALL DELIVERED!', score)
-      cells[15].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
-      // console.log('SCORE', score)
-    } else if (currentScore === 300) {
-      // alert('ALL DELIVERED!', score)
-      cells[18].classList.remove(kikiClass)
-      cells[95].classList.add(kikiClass)
+      // } else if (currentScore === 300) {
+      //   // alert('ALL DELIVERED!', score)
+      //   cells[15].classList.remove(kikiClass)
+      
+      //   // console.log('SCORE', score)
+      // } else if (currentScore === 300) {
+      //   // alert('ALL DELIVERED!', score)
+      //   cells[18].classList.remove(kikiClass)
+      
       // console.log('SCORE', score)
     }
       
@@ -176,47 +186,47 @@ function init() {
 
   
   
-  //* LOSING LIVES
-  function LoseLives(event) {
-    if (document.getElementsByClassName('eagle').forEach('kiki') && livesLeft > 0) {
+  //* LOSING LIVES 
+  function checkCollision(event) {
+    
+    if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
+      console.log('event.target.src', event.target.src)
+      console.log('lives left', livesLeft)
+      // event.target.classList.add('broke-heart')
+      // console.log('livesLeft', livesLeft)
+      
+      // event.target
+    } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
+      livesLeft--
+      console.log('lives left', livesLeft)
     }
   }
-
-  // if (cells('eagle').classList.contains('kiki') && livesLeft > 0) {
-  //   livesLeft-- 
-  //   console.log('LIVES LEFT', livesLeft)
-
-  // } else if (cells[76].classList.contains('kiki') && livesLeft > 0) {
-  //   livesLeft-- 
-  //   console.log('LIVES LEFT', livesLeft)
-
-
-  // } else {
-  //   console.log('something')
-    
-
   
   
-
-
-  // } else if (cells[75].classList.contains('kiki') && livesLeft > 0) {
-  //   livesLeft--
-  // } else { 
-  // window.alert(score)
     
   
+  // * MOVING OBSTACLES
+  
+  function handleClick(event) {
 
-
+    setInterval(() => {
+      eagleCurrentPosition--
+      planeCurrentPosition++
+    
+    }, 1000)
+  }
 
   // * EVENT LISTENERS
 
   document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
   document.addEventListener('keyup', winPoints)
-  document.addEventListener('keyup', LoseLives)
-  // startButton.addEventListener('click', handleClick)
+  document.addEventListener('keyup', checkCollision)
+  startButton.addEventListener('click', handleClick)
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
+
+  playAudio.addEventListener('click', handlePlayAudio)
   
   // console.log('CELLS', cells)
 }
