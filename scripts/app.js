@@ -225,6 +225,7 @@ function init() {
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
       removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       document.getElementById('one').src = './assets/brokenbread (1).png'
       // event.target.src = './assets/brokenbread (1).png'
@@ -245,15 +246,17 @@ function init() {
   // * MOVING OBSTACLES =========================================================================================
   
   function moveEagles() {
-    // const eagleBlock = [50, 51, 52, 53, 54, 56, 57, 58, 59, 60]
-    // const moveEagleLeft = document.querySelectorAll('.eagle')
     // console.log('plane current position', planeCurrentPosition)
     setInterval(() => {
       for (let i = 0; i < eagleCurrentPosition.length; i++) {
-        console.log('eagle current position', eagleCurrentPosition)
-        if (livesLeft > 0) {
+        // console.log('eagle current position', eagleCurrentPosition)
+        if (livesLeft > 0 && score < 300 && gameTime !== 0) { // stops eagles moving if any of these are true
           cells[eagleCurrentPosition[i]].classList.remove('eagle')
-          eagleCurrentPosition[i]--
+          if (eagleCurrentPosition[i] % width !== 0) {
+            eagleCurrentPosition[i]--
+          } else {
+            eagleCurrentPosition[i] += width - 1
+          }
           cells[eagleCurrentPosition[i]].classList.add('eagle')
           continue
         // } else if (cells[eagleCurrentPosition] === 50) {
@@ -262,7 +265,7 @@ function init() {
         //   cells[eagleCurrentPosition[i]].classList.add('eagle')
         }
       }
-      console.log('eagle position after redefining', eagleCurrentPosition)
+      // console.log('eagle position after redefining', eagleCurrentPosition)
       
     }, 2000)
   }
