@@ -18,13 +18,13 @@ console.log('js running')
 
 function init() {
 
-  // * VARIABLES & ELEMENTS
+  // * VARIABLES
   const grid = document.querySelector('.grid') // get the grid element
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
   const cells = [] // put an empty array that our divs we create will be put in
-  let livesLeft = 3
-  let score = 0
+  let livesLeft = 3 // defining how many lives player has
+  let score = 0 // defining score starts at 0
   const breadHeart = document.querySelectorAll('.hearts')
   console.log('breadheart', breadHeart)
   // let myInterval 
@@ -41,13 +41,14 @@ function init() {
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70, 71]
-  const eagleCurrentPosition = document.querySelectorAll('.eagle')
+  let eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70, 71]
+  // const eagleCurrentPosition = document.querySelectorAll('.eagle')
   // const eagleCurrentPosition = 0
   // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
-  const planeCurrentPosition = document.querySelectorAll('.plane')
+  // const planeCurrentPosition = document.querySelectorAll('.plane')
   // let planePositions = 0
 
   const startButton = document.querySelector('.start') // making a button to click to start the game
@@ -85,6 +86,7 @@ function init() {
     addEagle(eagleStartPosition[4]) 
     addEagle(eagleStartPosition[5]) 
     addEagle(eagleStartPosition[6]) 
+    addEagle(eagleStartPosition[7]) 
     addPlane(planeStartPosition[0]) // call function to add PLANE to start position
     addPlane(planeStartPosition[1]) 
     addPlane(planeStartPosition[2]) 
@@ -265,12 +267,14 @@ function init() {
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
   startButton.addEventListener('click', handleClick)
+  // eagleCurrentPosition.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
 
 
   // breadHeart.forEach(button => {
   //   button.addEventListener('keyUp', checkCollision)
   // })
+  handleClick(eagleCurrentPosition)
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
 
