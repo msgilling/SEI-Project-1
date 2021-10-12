@@ -217,9 +217,7 @@ function init() {
       // console.log('SCORE', score)
     }
       
-  } 
-
-  
+  }   
   
   //* LOSING LIVES =========================================================================================
   function checkCollision() {
@@ -244,33 +242,55 @@ function init() {
   }
   
   
-    
-  
   // * MOVING OBSTACLES =========================================================================================
   
   function moveEagles() {
+    // const eagleBlock = [50, 51, 52, 53, 54, 56, 57, 58, 59, 60]
     // const moveEagleLeft = document.querySelectorAll('.eagle')
-
+    // console.log('plane current position', planeCurrentPosition)
     setInterval(() => {
-      eagleCurrentPosition.forEach((eagleCurrentPosition) => {
-        cells[eagleCurrentPosition].classList.remove('eagle')
-        console.log('eagleCurrentPosition -->', eagleCurrentPosition)
-        eagleCurrentPosition--
-        cells[eagleCurrentPosition].classList.add('eagle')
-        console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
-        // }
-      })
-      // }
-      // document.getElementsByClassName('eagle').documentOffsetLeft
-      // eagleCurrentPosition.style.left = '10px'
-      planeCurrentPosition.forEach((planeCurrentPosition) => {
-        cells[planeCurrentPosition].classList.remove('plane')
-        planeCurrentPosition++
-        cells[planeCurrentPosition].classList.add('plane')
-        // console.log('PLANE POSITION AFTER REDEFINING --->', planeCurrentPosition)
-      })
+      for (let i = 0; i < eagleCurrentPosition.length; i++) {
+        console.log('eagle current position', eagleCurrentPosition)
+        if (livesLeft > 0) {
+          cells[eagleCurrentPosition[i]].classList.remove('eagle')
+          eagleCurrentPosition[i]--
+          cells[eagleCurrentPosition[i]].classList.add('eagle')
+          continue
+        // } else if (cells[eagleCurrentPosition] === 50) {
+        //   cells[eagleCurrentPosition[i]].classList.remove('eagle')
+        //   addEagle(eagleStartPosition)
+        //   cells[eagleCurrentPosition[i]].classList.add('eagle')
+        }
+      }
+      console.log('eagle position after redefining', eagleCurrentPosition)
+      
     }, 2000)
   }
+
+  // function moveEagles() {
+  //   // const moveEagleLeft = document.querySelectorAll('.eagle')
+
+  //   setInterval(() => {
+  //     eagleCurrentPosition.forEach((eagleCurrentPosition, i) => {
+  //       cells[eagleCurrentPosition[i]].classList.remove('eagle')
+  //       console.log('eagleCurrentPosition -->', eagleCurrentPosition)
+  //       eagleCurrentPosition--
+  //       cells[eagleCurrentPosition[i]].classList.add('eagle')
+  //       console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
+  //       // }
+  //     })
+  // }
+  // document.getElementsByClassName('eagle').documentOffsetLeft
+  // eagleCurrentPosition.style.left = '10px'
+  // planeCurrentPosition.forEach((planeCurrentPosition) => {
+  //   cells[planeCurrentPosition].classList.remove('plane')
+  //   planeCurrentPosition++
+  //   cells[planeCurrentPosition].classList.add('plane')
+  // console.log('PLANE POSITION AFTER REDEFINING --->', planeCurrentPosition)
+        
+  //   }, 2000)
+  // }
+
 
   //* TIMER =========================================================================================
   const timeRemaining = document.querySelector('.timerSpan')
@@ -308,6 +328,7 @@ function init() {
   // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
   startButton.addEventListener('click', moveEagles)
+  
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
 
