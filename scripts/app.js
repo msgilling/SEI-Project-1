@@ -29,6 +29,8 @@ function init() {
   console.log('breadheart', breadHeart)
   // let myInterval 
 
+  
+
   const audio = document.querySelector('audio')
   const playAudio = document.querySelector('.play')
   console.log(audio)
@@ -212,8 +214,6 @@ function init() {
       console.log('lives left', livesLeft)
       // event.target.classList.add('broke-heart')
       // console.log('livesLeft', livesLeft)
-      
-      // event.target
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
       console.log('lives left', livesLeft)
@@ -229,6 +229,10 @@ function init() {
 
     setInterval(() => {
       eagleCurrentPosition++
+      console.log('POSITION AFTER REDEFINING --->', eagleCurrentPosition)
+
+     
+      // eagleCurrentPosition++
     
     }, 1000)
   }
