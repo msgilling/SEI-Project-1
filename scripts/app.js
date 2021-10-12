@@ -18,7 +18,7 @@ console.log('js running')
 
 function init() {
 
-  // * VARIABLES
+  // * VARIABLES =========================================================================================
   const grid = document.querySelector('.grid') // get the grid element
   const width = 10 // defining the width of my grid // could also be 10 but would be huge -> harder level/
   const cellCount = width * width // defining the number of cells in my grid
@@ -43,13 +43,14 @@ function init() {
 
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70, 71]
-  let eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70, 71]
+  const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70, 71]
   // const eagleCurrentPosition = document.querySelectorAll('.eagle')
   // const eagleCurrentPosition = 0
   // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
   // const planeCurrentPosition = document.querySelectorAll('.plane')
   // let planePositions = 0
 
@@ -84,7 +85,7 @@ function init() {
   //     modalWin.style.display = 'none'
   //   }
   // }
-  // * MAKING THE GRID
+  // * MAKING THE GRID =========================================================================================
   function createGrid(kikiStartPosition) {
     
     for (let i = 0; i < cellCount; i++) { // using a for loop to run through every cell
@@ -117,35 +118,40 @@ function init() {
     // console.log(theCells)
   }
 
-  // * PLAY MUSIC?
+  // * PLAY MUSIC? =========================================================================================
 
   function handlePlayAudio() {
     audio.src = 'https://youtu.be/5vzw3LrnSro'
+    
   }
   
-  // * ADDING KIKI TO GRID
+  // * ADDING KIKI TO GRID =========================================================================================
 
   function addKiki(position) { // takes the argument position so function is reusable
     // console.log('POSITION BEING PASSED IN --->', position)
     // console.log('CELL WE PICKING USING THE POSITION INDEX THATS PASSED IN --->', cells[position])
     cells[position].classList.add(kikiClass) // using position as an index to pick the correct div from array of cells + add the kikiClass
   }
-  // * REMOVING KIKI
+  // * REMOVING KIKI =========================================================================================
   function removeKiki(position) {
     cells[position].classList.remove(kikiClass)
   }
 
-  // * ADDING EAGLES TO GRID
+  // * ADDING EAGLES TO GRID =========================================================================================
   function addEagle(position) {
     cells[position].classList.add(eagleClass)
+  } 
+  // * REMOVING EAGLES TO GRID =========================================================================================
+  function removeEagle(position) {
+    cells[position].classList.remove(eagleClass)
   }
-  // * ADDING PLANES TO GRID
+  // * ADDING PLANES TO GRID =========================================================================================
   function addPlane(position) {
     cells[position].classList.add(planeClass)
   }
 
 
-  // * MOVING KIKI 
+  // * MOVING KIKI =========================================================================================
 
   function handleMoveKiki(event) {
     // console.log('key press')
@@ -171,8 +177,8 @@ function init() {
 
   }
 
-  // * WINNING POINTS 
-  function winPoints(event) {
+  // * WINNING POINTS  =========================================================================================
+  function winPoints() {
     // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
       currentScore.innerText = score += 100
@@ -215,11 +221,13 @@ function init() {
 
   
   
-  //* LOSING LIVES 
-  function checkCollision(event) {
+  //* LOSING LIVES =========================================================================================
+  function checkCollision() {
     
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
+      removeKiki(kikiCurrentPosition)
+      addKiki(kikiStartPosition)
       document.getElementById('one').src = './assets/brokenbread (1).png'
       // event.target.src = './assets/brokenbread (1).png'
       // console.log('breadHeart', breadHeart)
@@ -229,6 +237,8 @@ function init() {
       // console.log('livesLeft', livesLeft)
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
+      removeKiki(kikiCurrentPosition)
+      addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
     }
   }
@@ -236,31 +246,33 @@ function init() {
   
     
   
-  // * MOVING OBSTACLES
+  // * MOVING OBSTACLES =========================================================================================
   
-  function handleClick(event) {
+  function moveEagles() {
+    // const moveEagleLeft = document.querySelectorAll('.eagle')
 
     setInterval(() => {
-      // for (let i = 0; i < eagleCurrentPosition.length; i++)
       eagleCurrentPosition.forEach((eagleCurrentPosition) => {
-        // console.log('eagleCurrentPosition -->', eagleCurrentPosition)
-        if (eagleCurrentPosition % width !== 0) {
-          eagleCurrentPosition--
-          console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
-        }
+        cells[eagleCurrentPosition].classList.remove('eagle')
+        console.log('eagleCurrentPosition -->', eagleCurrentPosition)
+        eagleCurrentPosition--
+        cells[eagleCurrentPosition].classList.add('eagle')
+        console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
+        // }
       })
       // }
       // document.getElementsByClassName('eagle').documentOffsetLeft
       // eagleCurrentPosition.style.left = '10px'
-      
-      // console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition
-     
-    
-    
-    }, 1000)
+      planeCurrentPosition.forEach((planeCurrentPosition) => {
+        cells[planeCurrentPosition].classList.remove('plane')
+        planeCurrentPosition++
+        cells[planeCurrentPosition].classList.add('plane')
+        // console.log('PLANE POSITION AFTER REDEFINING --->', planeCurrentPosition)
+      })
+    }, 2000)
   }
 
-  //* TIMER
+  //* TIMER =========================================================================================
   const timeRemaining = document.querySelector('.timerSpan')
   let timerId = null
   let gameTime = 20
@@ -283,25 +295,19 @@ function init() {
     }
   }
 
-  // * RESTARTING GAME
+  // * RESTARTING GAME =========================================================================================
   // function restartGame() {
   // 
   // }
 
-  // * EVENT LISTENERS
+  // * EVENT LISTENERS =========================================================================================
 
   document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
-  startButton.addEventListener('click', handleClick)
-  // eagleCurrentPosition.addEventListener('click', handleClick)
+  // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
-
-
-  // breadHeart.forEach(button => {
-  //   button.addEventListener('keyUp', checkCollision)
-  // })
-  handleClick(eagleCurrentPosition)
+  startButton.addEventListener('click', moveEagles)
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
 

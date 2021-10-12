@@ -80,6 +80,7 @@ aside {
   height: 10%;
   width: 10%;
   font-size: 0px;
+  position: relative;
 }
 
 .grid div.kiki {
@@ -100,6 +101,7 @@ button {
   border: none;
   background-color: rgb(201, 34, 34);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .grid div.eagle { /* <<< THESE MOVE TO THE LEFT <<< */
@@ -107,7 +109,7 @@ button {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  position: relative;
+  /* position: relative; */
 }
 .grid div.plane { /* >>> THESE MOVE TO THE RIGHT >>> */
   background-image: url('../assets/plane.png');
