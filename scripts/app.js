@@ -71,6 +71,19 @@ function init() {
   console.log('loseGame', loseGame)
   loseGame.innerText = 'OH NO! KIKI COULD NOT MAKE ALL HER DELIVERIES. TRY AGAIN?' // text I want to pop up
 
+  // let modalWin = document.getElementById('.winGame')
+  // let modalLose = document.getElementById('loseGame')
+  
+  // let closeBtn = document.querySelector('.close-btn')
+
+  // modalWin.addEventListener('click', )
+
+
+  // window.onclick = function(event) {
+  //   if (event.target === modalWin) {
+  //     modalWin.style.display = 'none'
+  //   }
+  // }
   // * MAKING THE GRID
   function createGrid(kikiStartPosition) {
     
@@ -228,11 +241,21 @@ function init() {
   function handleClick(event) {
 
     setInterval(() => {
-      eagleCurrentPosition++
-      console.log('POSITION AFTER REDEFINING --->', eagleCurrentPosition)
-
+      // for (let i = 0; i < eagleCurrentPosition.length; i++)
+      eagleCurrentPosition.forEach((eagleCurrentPosition) => {
+        // console.log('eagleCurrentPosition -->', eagleCurrentPosition)
+        if (eagleCurrentPosition % width !== 0) {
+          eagleCurrentPosition--
+          console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
+        }
+      })
+      // }
+      // document.getElementsByClassName('eagle').documentOffsetLeft
+      // eagleCurrentPosition.style.left = '10px'
+      
+      // console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition
      
-      // eagleCurrentPosition++
+    
     
     }, 1000)
   }
