@@ -46,7 +46,7 @@ aside {
   font-family: 'Press Start 2P', cursive;
   color: white;
   letter-spacing: 3px;
-  font-size: 10px;
+  font-size: 8px;
   /* border: 2px solid white; */
   
 }
@@ -97,7 +97,7 @@ button {
   text-transform: lowercase;
   color: white;
   font-family: 'Press Start 2P', cursive;
-  font-size: 16px;
+  font-size: 12px;
   border: none;
   background-color: rgb(201, 34, 34);
   border-radius: 5px;
@@ -161,19 +161,40 @@ div #broke.heart {
   margin-right: 5px;
 }
 
-.modalWin {
-  display: none; /* hidden by default */
-  position: fixed; 
-  padding-top: 50px;
-  left: 0; 
-  top: 0;
-  width: 100%;
-  height: 100%; 
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
+.modal {
+  background: white;
+  position: fixed;
+  justify-content: center;
 }
 
-.modal-content {
+.modal-content-win {
+  display: none; 
+  text-align: center;
+  position: fixed; 
+  padding-top: 50px;
+  background-color: white;
+  padding: 20px; 
+  margin: auto; 
+  height: 300px;
+  width: 500px;
+  /* background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5); */
+}
+.modal-content-lose {
+  display: none; 
+  text-align: center;
+  position: fixed; 
+  padding-top: 50px;
+  background-color: white;
+  padding: 20px; 
+  margin: auto; 
+  height: 300px;
+  width: 500px;
+  /* background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5); */
+}
+
+/* .modal-content {
   position: relative; 
   background-color: white;
   padding: 20px; 
@@ -184,7 +205,7 @@ div #broke.heart {
   animation-name: animatetop;
   animation-duration: 0.4s
 
-}
+} */
 
 .close-btn {
   float: right; 

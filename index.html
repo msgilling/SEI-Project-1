@@ -13,30 +13,14 @@
       <h1>Kiki's Delivery Service</h1>
     </header>
     <main>
-      <!-- <div id="modalWin" class="winGame">
-        <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <p>Congrats! You've helped Kiki delivery all the bread! 
-          <br>
-          Play again?
-        </p>
-        </div>
-
-      </div>
-      <div id="modalLose" class="loseGame">
-        <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <p>Oh no! Kiki couldn't deliver all the bread in time ... 
-          <br>
-          Try again?</p>
-        </div> -->
 
       </div>
       <aside>
         <button class="start">Start</button>
         <h2>Current Score: <span class="scoreSpan"></span></h2>
         <h2>Time Remaining: <span class="timerSpan"></span></h2>
-        <div class="lives">
+        <h2>Lives:</h2>
+        <div class="lives">      
          <div class="heart" id="one"></div>
          <div class="heart" id="two"></div>
           <div class="heart" id="three"></div>
@@ -44,9 +28,27 @@
        <button class="play">Play</button>
   
      </aside>
-    
+     <div id="modalWin" class="winGame">
+      <div class="modal-content-win">
+      <span class="close-btn">&times;</span>
+      <p>Congrats! You've helped Kiki delivery all the bread! 
+        <br>
+        Play again?
+
+      </p>
+      </div> 
       <div class="grid-wrapper">
        <div class="grid"></div>
+       </div>
+
+       <div id="modalLose" class="loseGame">
+        <div class="modal-content-lose">
+        <span class="close-btn">&times;</span>
+        <p>Oh no! Kiki couldn't deliver all the bread in time ... 
+          <br>
+          Try again?</p>
+        </div>
+
       </div>
     </main>
   </body>

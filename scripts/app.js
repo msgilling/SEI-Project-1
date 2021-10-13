@@ -35,8 +35,6 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  
-
   const kikiClass = 'kiki' // defining the class for our character
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
   let kikiCurrentPosition = 95 // use let to track where KIKI is currently in terms of [index]
@@ -44,15 +42,11 @@ function init() {
   const eagleClass = 'eagle' // defining the class for eagle obstacle
   const eagleStartPosition = [75, 76, 68, 69, 62, 63, 70, 71]
   const eagleCurrentPosition = [75, 76, 68, 69, 62, 63, 70, 71]
-  // const eagleCurrentPosition = document.querySelectorAll('.eagle')
-  // const eagleCurrentPosition = 0
-  // let eaglePosition = 0
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
   const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
-  // const planeCurrentPosition = document.querySelectorAll('.plane')
-  // let planePositions = 0
+ 
 
   const startButton = document.querySelector('.start') // making a button to click to start the game
   // const resetButton = document.querySelector('reset') // making a button to reset the game
@@ -65,12 +59,11 @@ function init() {
   // let timer = 0
   // let counter = 0
 
-  const winGame = document.createElement('div') // defining a winGame function
-  console.log('wingame', winGame)
-  winGame.innerText = 'CONGRATS! YOU HELPED KIKI DELIVER ALL THE BREAD! PLAY AGAIN?' // what I wnt to somehow pop up
-  const loseGame = document.createElement('div') // defining a loseGame function
-  console.log('loseGame', loseGame)
-  loseGame.innerText = 'OH NO! KIKI COULD NOT MAKE ALL HER DELIVERIES. TRY AGAIN?' // text I want to pop up
+  const winGameModal = document.querySelector('.winGame') // defining a winGame function
+  console.log('winGameModal', winGameModal)
+  const loseGameModal = document.querySelector('.loseGame') // defining a loseGame function
+  console.log('loseGameModal', loseGameModal)
+  
 
   // let modalWin = document.getElementById('.winGame')
   // let modalLose = document.getElementById('loseGame')
@@ -121,7 +114,7 @@ function init() {
   // * PLAY MUSIC? =========================================================================================
 
   function handlePlayAudio() {
-    audio.src = 'https://youtu.be/5vzw3LrnSro'
+    audio.src = '../assets/Princess-Way.m4a'
     
   }
   
@@ -150,6 +143,10 @@ function init() {
     cells[position].classList.add(planeClass)
   }
 
+  // * REMOVING PLANES TO GRID =========================================================================================
+  function removePlane(position) {
+    cells[position].classList.remove(planeClass)
+  }
 
   // * MOVING KIKI =========================================================================================
 
@@ -185,47 +182,41 @@ function init() {
       // currentScore.innerText = score
       console.log('SCORE --->', score)
       removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
       removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      // cells[95].classList.add(kikiClass)
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki') && score !== 300) {
       currentScore.innerText = score += 100
       removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      // cells[95].classList.add(kikiClass)
       console.log('SCORE --->', score)
     } else if (currentScore === 300) {
-      cells[11, 15, 18].classList.remove(kikiClass)
-      
-      // console.log('winGame', winGame)
-      
-      // console.log('SCORE', score)
-      // } else if (currentScore === 300) {
-      //   // alert('ALL DELIVERED!', score)
-      //   cells[15].classList.remove(kikiClass)
-      
-      //   // console.log('SCORE', score)
-      // } else if (currentScore === 300) {
-      //   // alert('ALL DELIVERED!', score)
-      //   cells[18].classList.remove(kikiClass)
-      
-      // console.log('SCORE', score)
+      removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
+      addKiki(kikiStartPosition)
+      // winGameModal()
+      console.log()
     }
       
   }   
+
+  function winGameModal() {
+    document.style.display = 'block'
+  }
   
   //* LOSING LIVES =========================================================================================
   function checkCollision() {
     
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft--
-      removeKiki(kikiCurrentPosition)
-      kikiCurrentPosition = kikiStartPosition
+      removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
+      kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
       addKiki(kikiStartPosition)
       document.getElementById('one').src = './assets/brokenbread (1).png'
       // event.target.src = './assets/brokenbread (1).png'
@@ -237,8 +228,12 @@ function init() {
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
       removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
+    } else {
+      livesLeft === 0 || gameTime === 0
+      // gameOver()
     }
   }
   
@@ -259,40 +254,32 @@ function init() {
           }
           cells[eagleCurrentPosition[i]].classList.add('eagle')
           continue
-        // } else if (cells[eagleCurrentPosition] === 50) {
-        //   cells[eagleCurrentPosition[i]].classList.remove('eagle')
-        //   addEagle(eagleStartPosition)
-        //   cells[eagleCurrentPosition[i]].classList.add('eagle')
         }
       }
       // console.log('eagle position after redefining', eagleCurrentPosition)
-      
+    }, 2000)
+  }
+  function movePlanes() {
+    setInterval(() => {
+      for (let i = 0; i < planeCurrentPosition.length; i++) {
+        // console.log('plane current position', planeCurrentPosition)
+        if (livesLeft > 0 && score < 300 && gameTime !== 0) {
+          cells[planeCurrentPosition[i]].classList.remove('plane')
+          if (planeCurrentPosition[i] % width !== width - 1) {
+            planeCurrentPosition[i]++
+          } else {
+            planeCurrentPosition[i] -= width - 9
+          }
+          cells[planeCurrentPosition[i]].classList.add('plane')
+          continue
+        }
+      }
+      // console.log('plane position after redefining', planeCurrentPosition)
     }, 2000)
   }
 
-  // function moveEagles() {
-  //   // const moveEagleLeft = document.querySelectorAll('.eagle')
-
-  //   setInterval(() => {
-  //     eagleCurrentPosition.forEach((eagleCurrentPosition, i) => {
-  //       cells[eagleCurrentPosition[i]].classList.remove('eagle')
-  //       console.log('eagleCurrentPosition -->', eagleCurrentPosition)
-  //       eagleCurrentPosition--
-  //       cells[eagleCurrentPosition[i]].classList.add('eagle')
-  //       console.log('EAGLE POSITION AFTER REDEFINING --->', eagleCurrentPosition)
-  //       // }
-  //     })
-  // }
-  // document.getElementsByClassName('eagle').documentOffsetLeft
-  // eagleCurrentPosition.style.left = '10px'
-  // planeCurrentPosition.forEach((planeCurrentPosition) => {
-  //   cells[planeCurrentPosition].classList.remove('plane')
-  //   planeCurrentPosition++
-  //   cells[planeCurrentPosition].classList.add('plane')
-  // console.log('PLANE POSITION AFTER REDEFINING --->', planeCurrentPosition)
-        
-  //   }, 2000)
-  // }
+    
+  
 
 
   //* TIMER =========================================================================================
@@ -331,6 +318,7 @@ function init() {
   // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
   startButton.addEventListener('click', moveEagles)
+  startButton.addEventListener('click', movePlanes)
   
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
