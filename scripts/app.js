@@ -58,30 +58,32 @@ function init() {
  
   // * * *
   const startButton = document.querySelector('.start') // making a button to click to start the game
-  const resetButton = document.querySelector('.play-again') // making a button to reset the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
   const currentHearts = document.querySelector('.lives')
   console.log(currentHearts)
 
-  const modal = document.querySelector('.modal')
-  const winGameModal = document.querySelector('.winGame') // defining a winGame function
-  console.log('winGameModal', winGameModal)
-  const loseGameModal = document.querySelector('.loseGame') // defining a loseGame function
-  console.log('loseGameModal', loseGameModal)
-  
-  const closeModal = document.querySelector('.close-btn1')
 
-  function buttonModal() {
-    // modal.style.display = 'block'
-    // if (event.target === modal) {
-    modal.style.display = 'none'
-    // }
-  }
+  const winGameScreen = document.querySelector('.winGame') // defining a winGame function pop up
+  console.log('winGameModal', winGameScreen)
+  const loseGameScreen = document.querySelector('.loseGame') // defining a loseGame function pop up
+  console.log('loseGameModal', loseGameScreen)
   
-  closeModal.addEventListener('click', buttonModal)
+  // const closeModal = document.querySelector('.close-btn1') // makes whole pop up button >>> WHY
+
+  // function buttonModal() {
+  //   // modal.style.display = 'block'
+  //   // if (event.target === modal) {
+  //   modal.style.display = 'none'
+  //   // }
+  // }
   
+  // closeModal.addEventListener('click', buttonModal)
+  
+  const tryAgainBtn = document.querySelector('.try-again') // try again if you lose
+
+  const playAgainBtn = document.querySelector('.play-again') // play again just for lolz
 
 
   // * MAKING THE GRID =========================================================================================
@@ -193,8 +195,8 @@ function init() {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      // winGameModal()
-      console.log()
+      gameOverGood()
+      // console.log()
     }
       
   }   
@@ -229,22 +231,36 @@ function init() {
 
   // * GAME OVER ==========================================================================================
   function gameOverBad() {
-    if (livesLeft === 0 || gameTime === 0) {
+    if (livesLeft === 0 || gameTime === 0 && currentScore < 300) {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       clearInterval(timerId)
-      winGameModal.style.display = 'block'
-      modal.style.display = 'block'
+      loseGameScreen.style.display = 'block'
+      // modal.style.display = 'block'
       
     }
   }
-  // * RESET THE GAME ======================================================================================
-  // function resetGame() {
-  //   console.log
 
-  // }
-  
+  function gameOverGood() {
+    if (currentScore === 300)
+      removeKiki(kikiCurrentPosition)
+    kikiCurrentPosition = kikiStartPosition
+    addKiki(kikiStartPosition)
+    clearInterval(timerId)
+    winGameScreen.style.display = 'block'
+  }
+  // * RESET THE GAME ======================================================================================
+  function tryAgain() {
+    location.reload()
+  }
+
+  tryAgainBtn.addEventListener('click', tryAgain)
+
+  function playAgain() {
+    location.reload()
+  }
+  playAgainBtn.addEventListener('click', playAgain)
   
   // * MOVING OBSTACLES =========================================================================================
   
