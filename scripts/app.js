@@ -225,7 +225,6 @@ function init() {
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       clearInterval(timerId)
-      timerId = null
       winGameModal.style.display = 'block'
       modal.style.display = 'block'
     }
