@@ -65,6 +65,7 @@ function init() {
   const currentHearts = document.querySelector('.lives')
   console.log(currentHearts)
 
+  const modal = document.querySelector('.modal')
   const winGameModal = document.querySelector('.winGame') // defining a winGame function
   console.log('winGameModal', winGameModal)
   const loseGameModal = document.querySelector('.loseGame') // defining a loseGame function
@@ -220,7 +221,13 @@ function init() {
   // * GAME OVER
   function gameOverBad() {
     if (livesLeft === 0 || gameTime === 0) {
-      document.querySelectorAll('.loseGame')
+      removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
+      addKiki(kikiStartPosition)
+      clearInterval(timerId)
+      timerId = null
+      winGameModal.style.display = 'block'
+      modal.style.display = 'block'
     }
   }
   
