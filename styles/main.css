@@ -6,7 +6,7 @@ body {
   height: 80vh;
   margin: 0;
   background-color:rgb(55, 72, 129);
-  color: white;
+  /* color: white; */
   text-align: center;
   font-family: 'Abril Fatface', cursive, sans-serif;
 }
@@ -14,12 +14,15 @@ body {
 h4 {
   font-family: 'Press Start 2p', cursive, sans-serif;
   font-size: 10px;
-  /* margin-left: 11vh; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vh;
 }
 
 header {
   padding-top: 50px;
-  padding-left: 50px;
+  /* padding-left: 50px; */
   display: flex;
   justify-content: flex-start;
 
@@ -48,6 +51,7 @@ header img {
 
 main {
   display: flex;
+  height: 70vh;
 }
 
 aside {
@@ -64,7 +68,7 @@ aside {
   font-size: 8px;
   height: 60vh;
   padding-top: 30px;
-  margin-top: 110px;
+  /* margin-top: 110px; */
   margin-left: 5vh;
   /* border: 2px solid white; */
   
@@ -204,7 +208,7 @@ div #broke.heart {
   margin-right: 5px;
 }
 
-.modal {
+.winGame {
   display: none; 
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -221,7 +225,7 @@ div #broke.heart {
   justify-content: center; */
 }
 
-.modal-content-win {
+.content-win {
   display: none; 
   color: black;
   text-align: center;
@@ -229,12 +233,12 @@ div #broke.heart {
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 600px;
+  margin-top: 150px;
   height: 300px;
   width: 500px;
   border-radius: 5px;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -252,8 +256,27 @@ div .modal-content-lose p {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  cursor: pointer;
 }
-.modal-content-lose {
+.loseGame {
+  display: none; 
+  color: black;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* background: white;
+  position: fixed;
+  justify-content: center; */
+}
+
+.content-lose {
   display: none; 
   color: black;
   text-align: center;
@@ -261,22 +284,28 @@ div .modal-content-lose p {
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin-left: 50px;
+  margin-left: 600px;
+  margin-top: 150px;
   height: 300px;
   width: 500px;
   border-radius: 5px;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 
-.close-btn {
+.close-btn1 {
   float: right; 
-  color: red;
-  font-size: 24px;  
+  font-size: 10px;  
   font-weight: bold;
-
+  cursor: pointer;
+}
+.close-btn2 {
+  float: right; 
+  font-size: 10px;  
+  font-weight: bold;
+  cursor: pointer;
 }
 
 

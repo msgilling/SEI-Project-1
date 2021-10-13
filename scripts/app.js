@@ -58,7 +58,7 @@ function init() {
  
   // * * *
   const startButton = document.querySelector('.start') // making a button to click to start the game
-  // const resetButton = document.querySelector('reset') // making a button to reset the game
+  const resetButton = document.querySelector('.play-again') // making a button to reset the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
   console.log(currentScore)
@@ -71,9 +71,17 @@ function init() {
   const loseGameModal = document.querySelector('.loseGame') // defining a loseGame function
   console.log('loseGameModal', loseGameModal)
   
+  const closeModal = document.querySelector('.close-btn1')
 
+  function buttonModal() {
+    // modal.style.display = 'block'
+    // if (event.target === modal) {
+    modal.style.display = 'none'
+    // }
+  }
   
-  // let closeBtn = document.querySelector('.close-btn')
+  closeModal.addEventListener('click', buttonModal)
+  
 
 
   // * MAKING THE GRID =========================================================================================
@@ -190,16 +198,17 @@ function init() {
     }
       
   }   
+
+
   
   //* LOSING LIVES =========================================================================================
   function checkCollision() {
-    
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
-      livesLeft--
+      livesLeft-- // taking away a life
       removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
       kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
-      addKiki(kikiStartPosition)
-      document.getElementById('one').src = './assets/brokenbread (1).png'
+      addKiki(kikiStartPosition) // KIKI back at the start ONLY
+      document.getElementById('one').src = './assets/brokenbread (1).png' // want th change bread icon somehow?
       // event.target.src = './assets/brokenbread (1).png'
       // console.log('breadHeart', breadHeart)
       // console.log('event.target.src', event.target.src)
@@ -214,11 +223,11 @@ function init() {
       console.log('lives left', livesLeft)
     } else {
       livesLeft === 0 || gameTime === 0
-      // gameOver()
+      gameOverBad()
     }
   }
 
-  // * GAME OVER
+  // * GAME OVER ==========================================================================================
   function gameOverBad() {
     if (livesLeft === 0 || gameTime === 0) {
       removeKiki(kikiCurrentPosition)
@@ -227,8 +236,14 @@ function init() {
       clearInterval(timerId)
       winGameModal.style.display = 'block'
       modal.style.display = 'block'
+      
     }
   }
+  // * RESET THE GAME ======================================================================================
+  // function resetGame() {
+  //   console.log
+
+  // }
   
   
   // * MOVING OBSTACLES =========================================================================================
@@ -319,10 +334,7 @@ function init() {
     }
   }
 
-  // * RESTARTING GAME =========================================================================================
-  // function restartGame() {
-  // 
-  // }
+
 
   // * EVENT LISTENERS =========================================================================================
 
@@ -336,7 +348,7 @@ function init() {
   startButton.addEventListener('click', movePlanes)
   startButton.addEventListener('click', eagleStartPosition)
   startButton.addEventListener('click', planeStartPosition)
-
+  // resetButton.addEventListener('click', )
   
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
