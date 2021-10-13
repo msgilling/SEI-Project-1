@@ -220,7 +220,7 @@ function init() {
   // * GAME OVER
   function gameOverBad() {
     if (livesLeft === 0 || gameTime === 0) {
-
+      document.querySelectorAll('.loseGame')
     }
   }
   
