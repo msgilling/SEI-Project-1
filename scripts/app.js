@@ -29,11 +29,11 @@ function init() {
   console.log('breadheart', breadHeart)
   // let myInterval 
 
-  
-
   const audio = document.querySelector('audio')
   const playAudio = document.querySelector('.play')
   console.log(audio)
+
+  // * * *
 
   const kikiClass = 'kiki' // defining the class for our character
   const kikiStartPosition = 95 // starting position of KIKI which refers to index
@@ -46,8 +46,17 @@ function init() {
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
   const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
- 
 
+  // const houseOneClass = 'houseOne'
+  // const houseOnePosition = 1
+
+  // const houseTwoClass = 'houseTwo'
+  // const houseTwoPosition = 5
+
+  // const houseThreeClass = 'houseThree'
+  // const houseThreePosition = 8
+ 
+  // * * *
   const startButton = document.querySelector('.start') // making a button to click to start the game
   // const resetButton = document.querySelector('reset') // making a button to reset the game
 
@@ -55,9 +64,6 @@ function init() {
   console.log(currentScore)
   const currentHearts = document.querySelector('.lives')
   console.log(currentHearts)
-  // const timeRemaining = document.querySelector('.timerSpan)
-  // let timer = 0
-  // let counter = 0
 
   const winGameModal = document.querySelector('.winGame') // defining a winGame function
   console.log('winGameModal', winGameModal)
@@ -65,19 +71,10 @@ function init() {
   console.log('loseGameModal', loseGameModal)
   
 
-  // let modalWin = document.getElementById('.winGame')
-  // let modalLose = document.getElementById('loseGame')
   
   // let closeBtn = document.querySelector('.close-btn')
 
-  // modalWin.addEventListener('click', )
 
-
-  // window.onclick = function(event) {
-  //   if (event.target === modalWin) {
-  //     modalWin.style.display = 'none'
-  //   }
-  // }
   // * MAKING THE GRID =========================================================================================
   function createGrid(kikiStartPosition) {
     
@@ -88,25 +85,8 @@ function init() {
       cells.push(cell) // this adds our newly create div to our empty arrays from earlier ^ []
     }
     addKiki(kikiStartPosition) // call function to add KIKI to start position
-    addEagle(eagleStartPosition[0]) // call function to add  to EAGLE in start position
-    addEagle(eagleStartPosition[1]) 
-    addEagle(eagleStartPosition[2]) 
-    addEagle(eagleStartPosition[3]) 
-    addEagle(eagleStartPosition[4]) 
-    addEagle(eagleStartPosition[5]) 
-    addEagle(eagleStartPosition[6]) 
-    addEagle(eagleStartPosition[7]) 
-    addPlane(planeStartPosition[0]) // call function to add PLANE to start position
-    addPlane(planeStartPosition[1]) 
-    addPlane(planeStartPosition[2]) 
-    addPlane(planeStartPosition[3]) 
-    addPlane(planeStartPosition[4]) 
-    addPlane(planeStartPosition[5]) 
-    addPlane(planeStartPosition[6]) 
-    addPlane(planeStartPosition[7]) 
-    addPlane(planeStartPosition[8]) 
-    addPlane(planeStartPosition[9]) 
-    addPlane(planeStartPosition[10]) 
+    
+
     // const theCells = document.querySelectorAll('.cell')
     // console.log(theCells)
   }
@@ -114,7 +94,7 @@ function init() {
   // * PLAY MUSIC? =========================================================================================
 
   function handlePlayAudio() {
-    audio.src = '../assets/Princess-Way.m4a'
+    audio.src = '../assets/Princess-Way.m4a' //! >>>> sort this!!
     
   }
   
@@ -130,22 +110,25 @@ function init() {
     cells[position].classList.remove(kikiClass)
   }
 
+  // * ADDING HOUSES TO GRID ???? =========================================================================================
+  // function addHouseOne(position) {
+  //   cells[position].classList.add(houseOneClass)
+  // } 
+  // function addHouseTwo(position) {
+  //   cells[position].classList.add('houseTwo')
+  // } 
+  // function addHouseTHree(position) {
+  //   cells[position].classList.add('houseThree')
+  // } 
+
   // * ADDING EAGLES TO GRID =========================================================================================
   function addEagle(position) {
     cells[position].classList.add(eagleClass)
   } 
-  // * REMOVING EAGLES TO GRID =========================================================================================
-  function removeEagle(position) {
-    cells[position].classList.remove(eagleClass)
-  }
+
   // * ADDING PLANES TO GRID =========================================================================================
   function addPlane(position) {
     cells[position].classList.add(planeClass)
-  }
-
-  // * REMOVING PLANES TO GRID =========================================================================================
-  function removePlane(position) {
-    cells[position].classList.remove(planeClass)
   }
 
   // * MOVING KIKI =========================================================================================
@@ -176,6 +159,7 @@ function init() {
 
   // * WINNING POINTS  =========================================================================================
   function winPoints() {
+    
     // console.log('EVENT', event)
     if (cells[11].classList.contains('kiki')) {
       currentScore.innerText = score += 100
@@ -205,10 +189,6 @@ function init() {
     }
       
   }   
-
-  function winGameModal() {
-    document.style.display = 'block'
-  }
   
   //* LOSING LIVES =========================================================================================
   function checkCollision() {
@@ -236,11 +216,27 @@ function init() {
       // gameOver()
     }
   }
+
+  // * GAME OVER
+  function gameOverBad() {
+    if (livesLeft === 0 || gameTime === 0) {
+
+    }
+  }
   
   
   // * MOVING OBSTACLES =========================================================================================
   
   function moveEagles() {
+    addEagle(eagleStartPosition[0]) // call function to add  to EAGLE in start position
+    addEagle(eagleStartPosition[1]) 
+    addEagle(eagleStartPosition[2]) 
+    addEagle(eagleStartPosition[3]) 
+    addEagle(eagleStartPosition[4]) 
+    addEagle(eagleStartPosition[5]) 
+    addEagle(eagleStartPosition[6]) 
+    addEagle(eagleStartPosition[7]) 
+
     // console.log('plane current position', planeCurrentPosition)
     setInterval(() => {
       for (let i = 0; i < eagleCurrentPosition.length; i++) {
@@ -260,6 +256,18 @@ function init() {
     }, 2000)
   }
   function movePlanes() {
+    addPlane(planeStartPosition[0]) // call function to add PLANE to start position
+    addPlane(planeStartPosition[1]) 
+    addPlane(planeStartPosition[2]) 
+    addPlane(planeStartPosition[3]) 
+    addPlane(planeStartPosition[4]) 
+    addPlane(planeStartPosition[5]) 
+    addPlane(planeStartPosition[6]) 
+    addPlane(planeStartPosition[7]) 
+    addPlane(planeStartPosition[8]) 
+    addPlane(planeStartPosition[9]) 
+    addPlane(planeStartPosition[10]) 
+
     setInterval(() => {
       for (let i = 0; i < planeCurrentPosition.length; i++) {
         // console.log('plane current position', planeCurrentPosition)
@@ -315,13 +323,18 @@ function init() {
   document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
+  document.addEventListener('keyup', gameOverBad)
   // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
   startButton.addEventListener('click', moveEagles)
   startButton.addEventListener('click', movePlanes)
+  startButton.addEventListener('click', eagleStartPosition)
+  startButton.addEventListener('click', planeStartPosition)
+
   
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
+
 
   playAudio.addEventListener('click', handlePlayAudio) // click to play music
   

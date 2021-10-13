@@ -6,6 +6,15 @@ body {
   height: 80vh;
   margin: 0;
   background-color:rgb(55, 72, 129);
+  color: white;
+  text-align: center;
+  font-family: 'Abril Fatface', cursive, sans-serif;
+}
+
+h4 {
+  font-family: 'Press Start 2p', cursive, sans-serif;
+  font-size: 10px;
+  /* margin-left: 11vh; */
 }
 
 header {
@@ -16,19 +25,25 @@ header {
 
 }
 
+h1 {
+  letter-spacing: 5px;
+}
+
 header h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 110px;
+  /* padding-left: 110px; */
   font-size: 50px;
   color: white;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
+  margin-left: 80px;
 }
 
 header img {
   width: 220px;
   padding: 10px;
+  margin-left: 20vh;
 }
 
 main {
@@ -47,6 +62,10 @@ aside {
   color: white;
   letter-spacing: 3px;
   font-size: 8px;
+  height: 60vh;
+  padding-top: 30px;
+  margin-top: 110px;
+  margin-left: 5vh;
   /* border: 2px solid white; */
   
 }
@@ -60,14 +79,14 @@ aside {
   height: 600px;
   width: 600px;
   background-image: url('../assets/2151256.png');
-  background-position: center;
+  background-position: right;
   background-size: cover;
   
   
 }
 
 .grid-wrapper {
-  height: 80vh; /* viewpoint height -> equals to 70% of of what your screen px is */
+  height: 70vh; /* viewpoint height -> equals to 70% of of what your screen px is */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,12 +98,36 @@ aside {
   flex-grow: 1;
   height: 10%;
   width: 10%;
-  font-size: 8px;
+  font-size: 0px;
   position: relative;
 }
 
 .grid div.kiki {
   background-image: url('../assets/13197F01-4369-41C9-94BB-486A447CE79B.GIF');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.grid div.house-one {
+  background-image: url('../assets/pngwing.com.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.grid div.house-two {
+  background-image: url('../assets/pngwing.com copy.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.grid div.house-three {
+  background-image: url('../assets/pngwing.com copy 2.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -162,23 +205,52 @@ div #broke.heart {
 }
 
 .modal {
-  background: white;
+  /* display: none;  */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* background: white;
   position: fixed;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .modal-content-win {
-  display: none; 
+  /* display: none;  */
+  color: black;
   text-align: center;
   position: fixed; 
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin: auto; 
+  margin-left: 50px;
+  margin-top: 50px;
+  /* margin: auto;  */
   height: 300px;
   width: 500px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5); */
+}
+
+div .modal-content-win p {
+  margin-top: 10px;
+}
+div .modal-content-lose p {
+  margin-top: 20px;
+}
+
+.play-again {
+  margin-top: 10px;
 }
 .modal-content-lose {
   display: none; 
@@ -187,29 +259,19 @@ div #broke.heart {
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin: auto; 
+  margin-left: 50px;
+  /* margin: auto;  */
   height: 300px;
   width: 500px;
-  /* background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5); */
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .modal-content {
-  position: relative; 
-  background-color: white;
-  padding: 20px; 
-  margin: auto; 
-  width: 75%;  
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
 
-} */
 
 .close-btn {
   float: right; 
-  color: lightgray; 
+  color: red 
   font-size: 24px;  
   font-weight: bold;
 
