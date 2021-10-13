@@ -103,11 +103,15 @@ function init() {
   }
 
   // * PLAY MUSIC? =========================================================================================
+  const isPlaying = false
 
   function handlePlayAudio() {
-    audio.src = '../assets/Princess-Way.m4a' //! >>>> sort this!!
+    audio.src = './assets/a-town-with-an-ocean-view-kiki-39-s-delivery-service-lo-fi-scloudtomp3downloader.com.mp3' //! >>>> sort this!!
+    isPlaying ? audio.pause() : audio.play() //! doesnt PAUSE 
+    audio.volume = 0.2
     
   }
+  
   
   // * ADDING KIKI TO GRID =========================================================================================
 
