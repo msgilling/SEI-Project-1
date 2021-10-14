@@ -62,7 +62,12 @@ function init() {
 
   const planeClass = 'plane' // defining the class for plane obstacle
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  planeStartPosition.reverse()
+  // const planeStartPosition = [21]
   const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
+  planeCurrentPosition.reverse()
+  // const planeCurrentPosition = [21]
+
 
   const houseOneClass = 'house-one' //defining class for first house
   const houseOnePosition = 1 // defining position the house will sit in
@@ -349,7 +354,9 @@ function init() {
           if (planeCurrentPosition[i] % width !== width - 1) {
             planeCurrentPosition[i]++
           } else {
-            planeCurrentPosition[i] -= width - 9
+            console.log('before', planeCurrentPosition[i])
+            planeCurrentPosition[i] -= width - 1
+            console.log('after', planeCurrentPosition[i])
           }
           cells[planeCurrentPosition[i]].classList.add('plane')
           continue
