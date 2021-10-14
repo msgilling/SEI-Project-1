@@ -33,6 +33,11 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
+  const breadHeartOne = document.querySelector('#one-heart')
+  const breadHeartTwo = document.querySelector('#two-heart')
+  const breadHeartThree = document.querySelector('#three-heart')
+  const breakBread = document.querySelectorAll('.broke-heart')
+
   // * * *
 
   const kikiClass = 'kiki' // defining the class for our character
@@ -264,19 +269,18 @@ function init() {
       // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
-      gameOverBad()
+      // gameOverBad()
     } else if (gameTime === 0 && currentScore !== 300) {
       // removeKiki(kikiCurrentPosition)
       // kikiCurrentPosition = kikiStartPosition
       // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
-      gameOverBad()
     }
   }
 
   function gameOverGood() {
-    if (currentScore === 300) {
+    if (gameTime !== 0 && currentScore === 300) {
       // removeKiki(kikiCurrentPosition)
       // kikiCurrentPosition = kikiStartPosition
       // addKiki(kikiStartPosition)
@@ -380,7 +384,7 @@ function init() {
         timeRemaining.innerHTML = gameTime // set the time remaining on the screen
         if (gameTime === 0) { // if time is up
           clearInterval(timerId) // clear the current timer
-          gameOverBad()
+          gameOverBad() // when timer runs out game over
           return
         }
       }, 1000)

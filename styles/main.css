@@ -181,7 +181,7 @@ div.lives {
   display: flex;
   justify-content: space-between;
 }
-div #one.heart {
+div #one-heart {
   background-image: url('../assets/breadpixel.png');
   background-position: center;
   background-size: cover;
@@ -191,7 +191,7 @@ div #one.heart {
   margin-right: 5px;
   
 }
-div #two.heart {
+div #two-heart {
   background-image: url('../assets/breadpixel.png');
   background-position: center;
   background-size: cover;
@@ -200,7 +200,7 @@ div #two.heart {
   height: 50px;
   margin-right: 5px;
 }
-div #three.heart {
+div #three-heart {
   background-image: url('../assets/breadpixel.png');
   background-position: center;
   background-size: cover;
@@ -210,7 +210,7 @@ div #three.heart {
   margin-right: 5px;
 }
 
-div #broke.heart {
+div .broke-heart {
   background-image: url('../assets/brokenbread (1).png');
   background-position: center;
   background-size: cover;
