@@ -243,14 +243,7 @@ function init() {
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
       gameOverBad()
-    } else if (currentScore !== 300) {
-      removeKiki(kikiCurrentPosition)
-      kikiCurrentPosition = kikiStartPosition
-      addKiki(kikiStartPosition)
-      clearInterval(timerId)
-      loseGameScreen.style.display = 'block'
-      gameOverBad()
-    } else if (gameTime === 0) {
+    } else if (gameTime === 0 && currentScore < 300) {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
@@ -377,6 +370,7 @@ function init() {
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
   document.addEventListener('keyup', gameOverBad)
+  document.addEventListener('keyup', gameOverGood)
   // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
   startButton.addEventListener('click', moveEagles)
