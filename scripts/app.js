@@ -248,17 +248,11 @@ function init() {
   function checkCollision() {
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft-- // taking away a life
-      changeHeart()
+      // changeHeart()
       removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
       kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
       addKiki(kikiStartPosition) // KIKI back at the start ONLY
-      document.getElementById('one').src = './assets/brokenbread (1).png' // want th change bread icon somehow?
-      // event.target.src = './assets/brokenbread (1).png'
-      // console.log('breadHeart', breadHeart)
-      // console.log('event.target.src', event.target.src)
       console.log('lives left', livesLeft)
-      // event.target.classList.add('broke-heart')
-      // console.log('livesLeft', livesLeft)
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
       removeKiki(kikiCurrentPosition)
@@ -266,7 +260,6 @@ function init() {
       addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
     } else if (livesLeft === 0) {
-      // livesLeft === 0 || gameTime === 0
       gameOverBad()
     } else if (gameTime === 0 && currentScore !== 300){
       gameOverBad()

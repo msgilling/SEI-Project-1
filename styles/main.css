@@ -119,7 +119,7 @@ aside {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
-  z-index: 1; 
+  z-index: 2; 
   background-position-y: 10px;
 }
 .grid div.house-two {
@@ -128,7 +128,7 @@ aside {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  z-index: 1; 
+  z-index: 2; 
   background-position-y: 10px;
 }
 .grid div.house-three {
@@ -137,7 +137,7 @@ aside {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  z-index: 1; 
+  z-index: 2; 
   background-position-y: 10px;
 }
 .grid div.floating {
@@ -146,7 +146,7 @@ aside {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  z-index: 3; 
+  z-index: 4; 
   background-position-y: -15px;
 }
 
@@ -220,14 +220,16 @@ div .broke-heart {
   margin-right: 5px;
 }
 
+/* WIN GAME WINDOW */
 .winGame {
   display: none; 
   position: fixed; /* stay in place on top of grid */
-  z-index: 2; /* sit on top */
+  z-index: 1; /* sit on top */
   padding-top: 150px;
   padding-left: 10px; 
   left: 0;
   top: 0;
+  width: 100%; /* full width */
   width: 100%; /* full width */
   height: 100%; /* full height */
   overflow: auto; /* scroll if needed */
@@ -243,8 +245,11 @@ div .broke-heart {
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin-left: 600px;
-  margin-top: 150px;
+  z-index: 1;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
   height: 300px;
   width: 500px;
   border-radius: 5px;
@@ -268,20 +273,22 @@ div .modal-content-lose p {
   margin-top: 10px;
   cursor: pointer;
 }
+
+/* LOSE GAME WINDOW */
 .loseGame {
-  display: none; 
-  color: black;
-  position: fixed; 
-  z-index: 2; 
+  /* display: none;  */
+  position: fixed; /* stay in place on top of grid */
+  z-index: 1; /* sit on top */
   padding-top: 150px;
-  padding-left: 10px;
+  padding-left: 10px; 
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
+  width: 100%; /* full width */
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  overflow: auto; /* scroll if needed */
   background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  background-color: rgba(0,0,0,0.4);  
  
 }
 
@@ -293,8 +300,11 @@ div .modal-content-lose p {
   padding-top: 50px;
   background-color: white;
   padding: 20px; 
-  margin-left: 600px;
-  margin-top: 150px;
+  z-index: 1;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
   height: 300px;
   width: 500px;
   border-radius: 5px;
