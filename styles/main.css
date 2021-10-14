@@ -276,7 +276,7 @@ div .modal-content-lose p {
 
 /* LOSE GAME WINDOW */
 .loseGame {
-  /* display: none;  */
+  display: none; 
   position: fixed; /* stay in place on top of grid */
   z-index: 1; /* sit on top */
   padding-top: 150px;
