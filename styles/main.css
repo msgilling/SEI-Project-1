@@ -95,7 +95,7 @@ aside {
   height: 600px;
   width: 600px;
   background-image: url('../assets/2151256.png');
-  /* background-image: url('../assets/wp5863405-aesthetic-pixel-art-wallpapers.jpg'); */
+  /* background-repeat: repeat-x; */
   background-position: right;
   background-size: cover;
 }
@@ -130,13 +130,13 @@ aside {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
-  height: 50px;
+  /* width: 50px; */
+  /* height: 50px; */
   cursor: pointer;
 }
 .grid div.house-two {
   background-image: url('../assets/pngwing.com copy.png');
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
@@ -147,6 +147,14 @@ aside {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+}
+.grid div.floating {
+  background-image: url('../assets/kisspng-pixel-art-2d-platform-png-5b3a7d30de1a22.9737652315305597929097.png');
+  /* background-position: top; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  margin-bottom: 300px;
 }
 
 button {

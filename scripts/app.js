@@ -47,14 +47,17 @@ function init() {
   const planeStartPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
   const planeCurrentPosition = [21, 22, 23, 33, 34, 35, 27, 28, 29, 38, 39]
 
-  // const houseOneClass = 'houseOne'
-  // const houseOnePosition = 1
+  const houseOneClass = 'house-one' //defining class for first house
+  const houseOnePosition = 1 // defining position the house will sit in
 
-  // const houseTwoClass = 'houseTwo'
-  // const houseTwoPosition = 5
+  const houseTwoClass = 'house-two'
+  const houseTwoPosition = 5
 
-  // const houseThreeClass = 'houseThree'
-  // const houseThreePosition = 8
+  const houseThreeClass = 'house-three'
+  const houseThreePosition = 8
+
+  const floatingClass = 'floating'
+  const floatingPosition = [11, 15, 18]
  
   // * * *
   const startButton = document.querySelector('.start') // making a button to click to start the game
@@ -96,7 +99,12 @@ function init() {
       cells.push(cell) // this adds our newly create div to our empty arrays from earlier ^ []
     }
     addKiki(kikiStartPosition) // call function to add KIKI to start position
-    
+    addHouseOne(houseOnePosition)
+    addHouseTwo(houseTwoPosition)
+    addHouseThree(houseThreePosition)
+    addFloatingIsland(floatingPosition[0])
+    addFloatingIsland(floatingPosition[1])
+    addFloatingIsland(floatingPosition[2])
 
     // const theCells = document.querySelectorAll('.cell')
     // console.log(theCells)
@@ -111,10 +119,8 @@ function init() {
     audio.volume = 0.2
     
   }
-  
-  
-  // * ADDING KIKI TO GRID =========================================================================================
 
+  // * ADDING KIKI TO GRID =========================================================================================
   function addKiki(position) { // takes the argument position so function is reusable
     // console.log('POSITION BEING PASSED IN --->', position)
     // console.log('CELL WE PICKING USING THE POSITION INDEX THATS PASSED IN --->', cells[position])
@@ -126,15 +132,18 @@ function init() {
   }
 
   // * ADDING HOUSES TO GRID ???? =========================================================================================
-  // function addHouseOne(position) {
-  //   cells[position].classList.add(houseOneClass)
-  // } 
-  // function addHouseTwo(position) {
-  //   cells[position].classList.add('houseTwo')
-  // } 
-  // function addHouseTHree(position) {
-  //   cells[position].classList.add('houseThree')
-  // } 
+  function addHouseOne(position) {
+    cells[position].classList.add(houseOneClass)
+  } 
+  function addHouseTwo(position) {
+    cells[position].classList.add(houseTwoClass)
+  } 
+  function addHouseThree(position) {
+    cells[position].classList.add(houseThreeClass)
+  } 
+  function addFloatingIsland(position) {
+    cells[position].classList.add(floatingClass)
+  } 
 
   // * ADDING EAGLES TO GRID =========================================================================================
   function addEagle(position) {
@@ -169,7 +178,7 @@ function init() {
     }
     console.log('POSITION AFTER REDEFINING --->', kikiCurrentPosition)
     addKiki(kikiCurrentPosition)
-
+    
   }
 
   // * WINNING POINTS  =========================================================================================
@@ -254,12 +263,13 @@ function init() {
   }
 
   function gameOverGood() {
-    if (currentScore === 300 && gameTime > 0) {
+    if (currentScore === 300) {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       clearInterval(timerId)
       winGameScreen.style.display = 'block'
+      gameOverGood()
     }
   }
   // * RESET THE GAME ======================================================================================
@@ -320,7 +330,7 @@ function init() {
     setInterval(() => {
       for (let i = 0; i < planeCurrentPosition.length; i++) {
         // console.log('plane current position', planeCurrentPosition)
-        if (livesLeft > 0 && score < 300 && gameTime !== 0) {
+        if (livesLeft > 0 && score !== 300 && gameTime !== 0) {
           cells[planeCurrentPosition[i]].classList.remove('plane')
           if (planeCurrentPosition[i] % width !== width - 1) {
             planeCurrentPosition[i]++
