@@ -3,9 +3,10 @@
 }
 
 body {
-  height: 80vh;
+  height: 100vh;
   margin: 0;
-  background-color:rgb(55, 72, 129);
+  margin-top: 20px;
+  background:linear-gradient(rgb(60, 78, 134), rgb(22, 34, 73));
   /* color: white; */
   text-align: center;
   font-family: 'Abril Fatface', cursive, sans-serif;
@@ -17,45 +18,53 @@ h4 {
   color: white;
   display: flex;
   flex-direction: column;
-  margin-left: 10vh;
-  margin-bottom: 20px;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
 }
 
 header {
-  padding-top: 50px;
-  /* padding-left: 50px; */
   display: flex;
-  justify-content: flex-start;
-
+  align-items: center;
+  margin-left: 5vh;
 }
 
-h1 {
+/* h1 {
   letter-spacing: 5px;
-}
-
-header h1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* padding-left: 110px; */
-  font-size: 50px;
   color: white;
-  letter-spacing: 5px;
-  margin-left: 80px;
-  margin-bottom: 50px;
-  flex-grow: 2;
+  font-size: 40px;
+} */
+
+.logo-wrapper {
+  width: calc(33.33% - 10px);
+  /* flex-grow: 1; */
+  text-align: center;
+  /* margin-right: 30px; */
 }
 
-header img {
-  width: 220px;
-  padding: 50px;
-  margin-left: 20vh;
-  flex-grow: 1;
+.logo-wrapper img {
+  border-radius: 50%;
+  height: 150px;
+}
+
+.title-wrapper {
+  width: 600px;
+}
+
+.title-wrapper h1 {
+  letter-spacing: 5px;
+  color: white;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.tag-wrapper {
+  margin-bottom: 20px;
 }
 
 main {
   display: flex;
   height: 70vh;
+  margin-top: 20px;
 }
 
 aside {
@@ -72,7 +81,6 @@ aside {
   font-size: 8px;
   height: 60vh;
   padding-top: 30px;
-  /* margin-top: 110px; */
   margin-left: 5vh;
   /* border: 2px solid white; */
   
@@ -87,10 +95,9 @@ aside {
   height: 600px;
   width: 600px;
   background-image: url('../assets/2151256.png');
+  /* background-image: url('../assets/wp5863405-aesthetic-pixel-art-wallpapers.jpg'); */
   background-position: right;
   background-size: cover;
-  
-  
 }
 
 .grid-wrapper {

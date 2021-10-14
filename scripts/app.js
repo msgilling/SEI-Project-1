@@ -106,8 +106,8 @@ function init() {
   const isPlaying = false
 
   function handlePlayAudio() {
-    audio.src = './assets/a-town-with-an-ocean-view-kiki-39-s-delivery-service-lo-fi-scloudtomp3downloader.com.mp3' //! >>>> sort this!!
-    isPlaying ? audio.pause() : audio.play() //! doesnt PAUSE 
+    audio.src = './assets/a-town-with-an-ocean-view-kiki-39-s-delivery-service-lo-fi-scloudtomp3downloader.com.mp3' 
+    isPlaying ? audio.pause() : audio.play() //! and ONLY PLAY APPARENTLY
     audio.volume = 0.2
     
   }
@@ -204,8 +204,6 @@ function init() {
     }
       
   }   
-
-
   
   //* LOSING LIVES =========================================================================================
   function checkCollision() {
@@ -227,32 +225,49 @@ function init() {
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
+    } else if (livesLeft === 0) {
+      // livesLeft === 0 || gameTime === 0
+      gameOverBad()
     } else {
-      livesLeft === 0 || gameTime === 0
+      gameTime === 0 && currentScore < 300
       gameOverBad()
     }
   }
 
   // * GAME OVER ==========================================================================================
   function gameOverBad() {
-    if (livesLeft === 0 || gameTime === 0 && currentScore < 300) {
+    if (livesLeft === 0) {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
-      // modal.style.display = 'block'
-      
+      gameOverBad()
+    } else if (currentScore !== 300) {
+      removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
+      addKiki(kikiStartPosition)
+      clearInterval(timerId)
+      loseGameScreen.style.display = 'block'
+      gameOverBad()
+    } else if (gameTime === 0) {
+      removeKiki(kikiCurrentPosition)
+      kikiCurrentPosition = kikiStartPosition
+      addKiki(kikiStartPosition)
+      clearInterval(timerId)
+      loseGameScreen.style.display = 'block'
+      gameOverBad()
     }
   }
 
   function gameOverGood() {
-    if (currentScore === 300)
+    if (currentScore === 300 && gameTime > 0) {
       removeKiki(kikiCurrentPosition)
-    kikiCurrentPosition = kikiStartPosition
-    addKiki(kikiStartPosition)
-    clearInterval(timerId)
-    winGameScreen.style.display = 'block'
+      kikiCurrentPosition = kikiStartPosition
+      addKiki(kikiStartPosition)
+      clearInterval(timerId)
+      winGameScreen.style.display = 'block'
+    }
   }
   // * RESET THE GAME ======================================================================================
   function tryAgain() {
