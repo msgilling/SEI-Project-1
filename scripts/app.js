@@ -25,18 +25,30 @@ function init() {
   const cells = [] // put an empty array that our divs we create will be put in
   let livesLeft = 3 // defining how many lives player has
   let score = 0 // defining score starts at 0
-  const breadHeart = document.querySelectorAll('.hearts')
-  console.log('breadheart', breadHeart)
+  // const breadHeart = document.querySelectorAll('.hearts')
+  // console.log('breadheart', breadHeart)
   // let myInterval 
 
   const audio = document.querySelector('audio')
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  const breadHeartOne = document.querySelector('#one-heart')
-  const breadHeartTwo = document.querySelector('#two-heart')
-  const breadHeartThree = document.querySelector('#three-heart')
-  const breakBread = document.querySelectorAll('.broke-heart')
+  const breadHeartOne = document.querySelector('#one')
+  const breadHeartTwo = document.querySelector('#two')
+  // const breadHeartThree = document.querySelector('#three')
+  // const breakBread = document.querySelectorAll('.broke-heart')
+
+  // function changeHeart() {
+  //   console.log('changeheart', changeHeart)
+  //   if (livesLeft--) {
+  //     breadHeartOne.innerHTML = breakBread
+  //     breadHeartOne.forEach(() => {
+  //       livesLeft--
+  //       breadHeartOne.innerHTML = breakBread
+  //     })
+
+  //   }
+  // }
 
   // * * *
 
@@ -226,7 +238,7 @@ function init() {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      gameOverGood() // deploys winGame window ???
+    
       // console.log()
     }
       
@@ -236,6 +248,7 @@ function init() {
   function checkCollision() {
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft-- // taking away a life
+      changeHeart()
       removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
       kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
       addKiki(kikiStartPosition) // KIKI back at the start ONLY
@@ -260,34 +273,25 @@ function init() {
     }
   }
 
+
+
   // * GAME OVER ==========================================================================================
   function gameOverBad() {
     console.log('game over')
     if (livesLeft === 0) {
-      // removeKiki(kikiCurrentPosition)
-      // kikiCurrentPosition = kikiStartPosition
-      // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
-      // gameOverBad()
+      
     } else if (gameTime === 0 && currentScore !== 300) {
-      // removeKiki(kikiCurrentPosition)
-      // kikiCurrentPosition = kikiStartPosition
-      // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
     }
   }
 
   function gameOverGood() {
-    if (gameTime !== 0 && currentScore === 300) {
-      // removeKiki(kikiCurrentPosition)
-      // kikiCurrentPosition = kikiStartPosition
-      // addKiki(kikiStartPosition)
-      // clearInterval(timerId)
-      winGameScreen.style.display = 'block'
-      gameOverGood()
-    }
+    winGameScreen.style.display = 'block'
+      
+    
   }
   // * RESET THE GAME ======================================================================================
   function tryAgain() {
@@ -362,9 +366,6 @@ function init() {
     }, 2000)
   }
 
-    
-  
-
 
   //* TIMER =========================================================================================
   const timeRemaining = document.querySelector('.timerSpan')
@@ -382,7 +383,11 @@ function init() {
       timerId = setInterval(() => { // set the timer to run every 1 second
         gameTime-- // reduce time remaining by one
         timeRemaining.innerHTML = gameTime // set the time remaining on the screen
-        if (gameTime === 0) { // if time is up
+        if (score === 300) {
+          clearInterval(timerId)
+          gameOverGood()
+        }
+        if (gameTime === 0 && score !== 300) { // if time is up
           clearInterval(timerId) // clear the current timer
           gameOverBad() // when timer runs out game over
           return
