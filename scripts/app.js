@@ -60,6 +60,7 @@ function init() {
   const floatingPosition = [11, 15, 18]
  
   // * * *
+
   const startButton = document.querySelector('.start') // making a button to click to start the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
@@ -73,20 +74,10 @@ function init() {
   const loseGameScreen = document.querySelector('.loseGame') // defining a loseGame function pop up
   console.log('loseGameModal', loseGameScreen)
   
-  // const closeModal = document.querySelector('.close-btn1') // makes whole pop up button >>> WHY
-
-  // function buttonModal() {
-  //   // modal.style.display = 'block'
-  //   // if (event.target === modal) {
-  //   modal.style.display = 'none'
-  //   // }
-  // }
-  
-  // closeModal.addEventListener('click', buttonModal)
   
   const tryAgainBtn = document.querySelector('.try-again') // try again if you lose
 
-  const playAgainBtn = document.querySelector('.play-again') // play again just for lolz
+  const playAgainBtn = document.querySelector('.play-again') // play again if you win
 
 
   // * MAKING THE GRID =========================================================================================
@@ -141,8 +132,24 @@ function init() {
   function addHouseThree(position) {
     cells[position].classList.add(houseThreeClass)
   } 
+
+  //* REMOVING HOUSES ==================================================================================================
+  function removeHouseOne(position) {
+    cells[position].classList.remove(houseOneClass)
+  } 
+  function removeHouseTwo(position) {
+    cells[position].classList.remove(houseTwoClass)
+  } 
+  function removeHouseThree(position) {
+    cells[position].classList.remove(houseThreeClass)
+  } 
+
+  // *  FLOATING ISLANDS =====================
   function addFloatingIsland(position) {
     cells[position].classList.add(floatingClass)
+  } 
+  function removeFloatingIsland(position) {
+    cells[position].classList.remove(floatingClass)
   } 
 
   // * ADDING EAGLES TO GRID =========================================================================================
@@ -176,7 +183,7 @@ function init() {
     } else {
       console.log('INVALID KEY') // any other key, we log invalid
     }
-    console.log('POSITION AFTER REDEFINING --->', kikiCurrentPosition)
+    // console.log('POSITION AFTER REDEFINING --->', kikiCurrentPosition)
     addKiki(kikiCurrentPosition)
     
   }
@@ -192,23 +199,29 @@ function init() {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
+      removeHouseOne(houseOnePosition) //removes house once visited
+      removeFloatingIsland(floatingPosition[0]) // removes floating island beneath it
     } else if (cells[15].classList.contains('kiki')){
       currentScore.innerText = score += 100
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
+      removeHouseTwo(houseTwoPosition)
+      removeFloatingIsland(floatingPosition[1])
       console.log('SCORE --->', score)
     } else if (cells[18].classList.contains('kiki') && score !== 300) {
       currentScore.innerText = score += 100
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
+      removeHouseThree(houseThreePosition)
+      removeFloatingIsland(floatingPosition[2])
       console.log('SCORE --->', score)
     } else if (currentScore === 300) {
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
-      gameOverGood()
+      gameOverGood() // deploys winGame window ???
       // console.log()
     }
       
@@ -237,25 +250,25 @@ function init() {
     } else if (livesLeft === 0) {
       // livesLeft === 0 || gameTime === 0
       gameOverBad()
-    } else {
-      gameTime === 0 && currentScore < 300
+    } else if (gameTime === 0 && currentScore !== 300){
       gameOverBad()
     }
   }
 
   // * GAME OVER ==========================================================================================
   function gameOverBad() {
+    console.log('game over')
     if (livesLeft === 0) {
-      removeKiki(kikiCurrentPosition)
-      kikiCurrentPosition = kikiStartPosition
-      addKiki(kikiStartPosition)
+      // removeKiki(kikiCurrentPosition)
+      // kikiCurrentPosition = kikiStartPosition
+      // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
       gameOverBad()
-    } else if (gameTime === 0 && currentScore < 300) {
-      removeKiki(kikiCurrentPosition)
-      kikiCurrentPosition = kikiStartPosition
-      addKiki(kikiStartPosition)
+    } else if (gameTime === 0 && currentScore !== 300) {
+      // removeKiki(kikiCurrentPosition)
+      // kikiCurrentPosition = kikiStartPosition
+      // addKiki(kikiStartPosition)
       clearInterval(timerId)
       loseGameScreen.style.display = 'block'
       gameOverBad()
@@ -264,10 +277,10 @@ function init() {
 
   function gameOverGood() {
     if (currentScore === 300) {
-      removeKiki(kikiCurrentPosition)
-      kikiCurrentPosition = kikiStartPosition
-      addKiki(kikiStartPosition)
-      clearInterval(timerId)
+      // removeKiki(kikiCurrentPosition)
+      // kikiCurrentPosition = kikiStartPosition
+      // addKiki(kikiStartPosition)
+      // clearInterval(timerId)
       winGameScreen.style.display = 'block'
       gameOverGood()
     }
@@ -367,6 +380,8 @@ function init() {
         timeRemaining.innerHTML = gameTime // set the time remaining on the screen
         if (gameTime === 0) { // if time is up
           clearInterval(timerId) // clear the current timer
+          gameOverBad()
+          return
         }
       }, 1000)
     }
@@ -379,8 +394,8 @@ function init() {
   document.addEventListener('keyup', handleMoveKiki) // this listens to what keys are pressed (up down left right)
   document.addEventListener('keyup', winPoints)
   document.addEventListener('keyup', checkCollision)
-  document.addEventListener('keyup', gameOverBad)
-  document.addEventListener('keyup', gameOverGood)
+  // document.addEventListener('keyup', gameOverBad)
+  // document.addEventListener('keyup', gameOverGood)
   // startButton.addEventListener('click', handleClick)
   startButton.addEventListener('click', startTimer)
   startButton.addEventListener('click', moveEagles)
@@ -388,6 +403,7 @@ function init() {
   startButton.addEventListener('click', eagleStartPosition)
   startButton.addEventListener('click', planeStartPosition)
   // resetButton.addEventListener('click', )
+
   
 
   createGrid(kikiStartPosition) // this pass function the starting position of Kiki
