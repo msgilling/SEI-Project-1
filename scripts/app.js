@@ -33,10 +33,14 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  const breadHeartOne = document.querySelector('#one')
-  const breadHeartTwo = document.querySelector('#two')
+  // const breadHeartOne = document.querySelector('#one')
+  // const breadHeartTwo = document.querySelector('#two')
   // const breadHeartThree = document.querySelector('#three')
   // const breakBread = document.querySelectorAll('.broke-heart')
+  // const breadHearts = document.querySelectorAll('.heart')
+
+ 
+ 
 
   // function changeHeart() {
   //   console.log('changeheart', changeHeart)
@@ -68,6 +72,7 @@ function init() {
   planeCurrentPosition.reverse()
   // const planeCurrentPosition = [21]
 
+  // * * *
 
   const houseOneClass = 'house-one' //defining class for first house
   const houseOnePosition = 1 // defining position the house will sit in
@@ -86,7 +91,7 @@ function init() {
   const startButton = document.querySelector('.start') // making a button to click to start the game
 
   const currentScore = document.querySelector('.scoreSpan') // to access the current score span and update whilst playing
-  console.log(currentScore)
+  // console.log(currentScore)
   const currentHearts = document.querySelector('.lives')
   console.log(currentHearts)
 
@@ -129,6 +134,7 @@ function init() {
   function handlePlayAudio() {
     audio.src = './assets/a-town-with-an-ocean-view-kiki-39-s-delivery-service-lo-fi-scloudtomp3downloader.com.mp3' 
     isPlaying ? audio.pause() : audio.play() //! and ONLY PLAY APPARENTLY
+   
     audio.volume = 0.2
     
   }
