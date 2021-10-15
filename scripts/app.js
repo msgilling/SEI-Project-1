@@ -37,7 +37,7 @@ function init() {
   // const breadHeartTwo = document.querySelector('#two')
   // const breadHeartThree = document.querySelector('#three')
   // const breakBread = document.querySelectorAll('.broke-heart')
-  // const breadHearts = document.querySelectorAll('.heart')
+  const breadHearts = document.querySelectorAll('.heart')
 
  
  
