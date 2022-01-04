@@ -37,10 +37,7 @@ function init() {
   // const breadHeartTwo = document.querySelector('#two')
   // const breadHeartThree = document.querySelector('#three')
   // const breakBread = document.querySelectorAll('.broke-heart')
-  const breadHearts = document.querySelectorAll('.heart')
-
- 
- 
+  // const breadHearts = document.querySelectorAll('.heart')
 
   // function changeHeart() {
   //   console.log('changeheart', changeHeart)
@@ -123,9 +120,6 @@ function init() {
     addFloatingIsland(floatingPosition[0])
     addFloatingIsland(floatingPosition[1])
     addFloatingIsland(floatingPosition[2])
-
-    // const theCells = document.querySelectorAll('.cell')
-    // console.log(theCells)
   }
 
   // * PLAY MUSIC? =========================================================================================
