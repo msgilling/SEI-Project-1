@@ -3,7 +3,7 @@
 // need to make a grid for KIKI to cross to deliver bread -> maybe 8x8/9x9?
 // get the grid div from the dom so can append new divs to it that we create
 // define starting position for player
-// Player needs to get KIKI to deliver 5 loaves of bread to customers across the grid
+// Player needs to get KIKI to deliver 3 loaves of bread to customers across the grid
 // the player has 3 lives before having to start from the beginning
 // register key events so player can use the correct game controls to move KIKI
 //! if player hits obstable -> COLLISION -> need to check if two things are inside that div class at the same time
@@ -127,7 +127,7 @@ function init() {
 
   function handlePlayAudio() {
     audio.src = './assets/a-town-with-an-ocean-view-kiki-39-s-delivery-service-lo-fi-scloudtomp3downloader.com.mp3' 
-    isPlaying ? audio.pause() : audio.play() //! and ONLY PLAY APPARENTLY
+    isPlaying ? audio.pause() : audio.play() //!  ONLY PLAY 
    
     audio.volume = 0.2
     
