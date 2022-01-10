@@ -30,9 +30,9 @@ I created the grid using a JavaScript function. Using this for loop, I was able 
 
 Next I wrote the function that enabled the keyboard movement for Kiki. I made a starting position div for Kiki and created keydown event listeners to allow the player to control Kiki’s movement when the corresponding keys are pressed. I made sure to add logic so that the player cannot make Kiki leave the grid.
 
-![Kiki Move Code](./assets/kiki_move_code.png)
+![Kiki Move Code](./assets/handle_move_code.png)
 
-![Kiki Start Game](./assets/game_screen.png)
+![Kiki Start Game](./assets/kiki_game_screen.png)
 
 Next, I used the indexes of the other divs for the obstacles and the end goals. Once the player pressed play, that triggered the startTimer() and moveEagles()/movePlanes() function. I created the interval function set to 1000ms so that the obstacles would move one cell per second across the grid. This timer will keep counting down until Kiki loses all her lives or gains all the points at the floating houses through if statements.
 
