@@ -41,13 +41,13 @@ Next, I used the indexes of the other divs for the obstacles and the end goals. 
 ### Collision detection:
 When the player moves Kiki and she hits an obstacle such as an eagle or plane the player will lose a life and if she loses all her lives she invokes the gameOverBad() function.
 
-![Collision Detection Code](./frontend/src/assets/collisioncode.png)
+![Collision Detection Code](./assets/collisioncode.png)
 
-![Game Over Function](./frontend/src/assets/gameoverbadfunction.png)
+![Game Over Function](./gameoverbadfunction.png)
 
 Once this happens, the corresponding hidden div changes from **none** to **block** to display the loseGameScreen for the player. Clicking on the red button refreshes the page to start over.
 
-![Kiki Lose Game Screen](./frontend/src/assets/gameoverbad.png)
+![Kiki Lose Game Screen](./assets/gameoverbad.png)
 
 ## Bugs
 You can move Kiki around the board before even starting the game.
