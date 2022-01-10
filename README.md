@@ -43,7 +43,7 @@ When the player moves Kiki and she hits an obstacle such as an eagle or plane th
 
 ![Collision Detection Code](./assets/collisioncode.png)
 
-![Game Over Function](./gameoverbadfunction.png)
+![Game Over Function](./assets/gameoverbadfunction.png)
 
 Once this happens, the corresponding hidden div changes from **none** to **block** to display the loseGameScreen for the player. Clicking on the red button refreshes the page to start over.
 
