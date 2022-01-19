@@ -249,13 +249,13 @@ function init() {
       console.log('lives left', livesLeft)
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
-  
+      removeBreadHeart()
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
     } else if (livesLeft === 0) {
-      
+      removeBreadHeart()
       gameOverBad()
     } else if (gameTime === 0 && currentScore !== 300){
       gameOverBad()
