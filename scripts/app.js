@@ -33,7 +33,7 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  const breadHeartOne = document.querySelector('#one')
+  const breadHeartOne = document.querySelector('#bread-one')
   // const breadHeartTwo = document.querySelector('#two')
   // const breadHeartThree = document.querySelector('#three')
   // const breakBread = document.querySelectorAll('.broke-heart')
