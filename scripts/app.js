@@ -34,22 +34,14 @@ function init() {
   console.log(audio)
 
   const breadHeartOne = document.querySelector('#bread-one')
-  const breadHeartTwo = document.querySelector('#two')
-  const breadHeartThree = document.querySelector('#three')
-  // const breakBread = document.querySelectorAll('.broke-heart')
-  // const breadHearts = document.querySelectorAll('.heart')
+  // const breadHeartTwo = document.querySelector('#two')
+  // const breadHeartThree = document.querySelector('#three')
 
-  // function changeHeart() {
-  //   console.log('changeheart', changeHeart)
-  //   if (livesLeft--) {
-  //     breadHeartOne.innerHTML = breakBread
-  //     breadHeartOne.forEach(() => {
-  //       livesLeft--
-  //       breadHeartOne.innerHTML = breakBread
-  //     })
-
-  //   }
-  // }
+  function removeBreadHeart() {
+    if (livesLeft === 2) {
+      breadHeartOne.style.display = 'none'
+    }
+  }
 
   // * * *
 
@@ -261,29 +253,29 @@ function init() {
       console.log('lives left', livesLeft)
     } else if (cells[kikiCurrentPosition].classList.contains('plane') && livesLeft > 0) {
       livesLeft--
-      removeBreadHeart()
+      // removeBreadHeart()
       removeKiki(kikiCurrentPosition)
       kikiCurrentPosition = kikiStartPosition
       addKiki(kikiStartPosition)
       console.log('lives left', livesLeft)
     } else if (livesLeft === 0) {
-      removeBreadHeart()
+      // removeBreadHeart()
       gameOverBad()
     } else if (gameTime === 0 && currentScore !== 300){
       gameOverBad()
     }
   }
 
-  function removeBreadHeart() {
-    if (livesLeft === 2) {
-      breadHeartOne.style.display = 'none'
-    } else if (livesLeft === 1) {
-      breadHeartTwo.style.display = 'none'
-    } else if (livesLeft === 0) {
-      breadHeartThree.style.display = 'none'
-      gameOverBad()
-    }
-  }
+  // function removeBreadHeart() {
+  //   if (livesLeft === 2) {
+  //     breadHeartOne.style.display = 'none'
+  //   } else if (livesLeft === 1) {
+  //     breadHeartTwo.style.display = 'none'
+  //   } else if (livesLeft === 0) {
+  //     breadHeartThree.style.display = 'none'
+  //     gameOverBad()
+  //   }
+  // }
 
 
 
