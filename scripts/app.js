@@ -33,9 +33,9 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  // const breadHeartOne = document.querySelector('#bread-one')
-  // const breadHeartTwo = document.querySelector('#two')
-  // const breadHeartThree = document.querySelector('#three')
+  const breadHeartOne = document.querySelector('#one')
+  const breadHeartTwo = document.querySelector('#two')
+  const breadHeartThree = document.querySelector('#three')
 
 
 
@@ -242,6 +242,7 @@ function init() {
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft-- // taking away a life
       // changeHeart()
+      removeBreadHeart()
       removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
       kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
       addKiki(kikiStartPosition) // KIKI back at the start ONLY
@@ -261,16 +262,16 @@ function init() {
     }
   }
 
-  // function removeBreadHeart() {
-  //   if (livesLeft === 2) {
-  //     breadHeartOne.style.display = 'none'
-  //   } else if (livesLeft === 1) {
-  //     breadHeartTwo.style.display = 'none'
-  //   } else if (livesLeft === 0) {
-  //     breadHeartThree.style.display = 'none'
-  //     gameOverBad()
-  //   }
-  // }
+  function removeBreadHeart() {
+    if (livesLeft === 2) {
+      breadHeartOne.style.display = 'none'
+    } else if (livesLeft === 1) {
+      breadHeartTwo.style.display = 'none'
+    } else if (livesLeft === 0) {
+      breadHeartThree.style.display = 'none'
+      gameOverBad()
+    }
+  }
 
 
 
