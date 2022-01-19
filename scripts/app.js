@@ -33,7 +33,7 @@ function init() {
   const playAudio = document.querySelector('.play')
   console.log(audio)
 
-  // const breadHeartOne = document.querySelector('#one')
+  const breadHeartOne = document.querySelector('#one')
   // const breadHeartTwo = document.querySelector('#two')
   // const breadHeartThree = document.querySelector('#three')
   // const breakBread = document.querySelectorAll('.broke-heart')
@@ -254,6 +254,7 @@ function init() {
     if (cells[kikiCurrentPosition].classList.contains('eagle') && livesLeft > 0) {
       livesLeft-- // taking away a life
       // changeHeart()
+      breadHeartOne.style.display = 'none'
       removeKiki(kikiCurrentPosition) // this just removes the class if you moves she still appears in the next cells so we do this >>
       kikiCurrentPosition = kikiStartPosition // >> which makes it so KIKI goes back to the start position ONLY
       addKiki(kikiStartPosition) // KIKI back at the start ONLY
